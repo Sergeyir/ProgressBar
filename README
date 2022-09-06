@@ -4,4 +4,4 @@ This is a simple library that allows you to use progressbar in your applications
 
 # Usage
 
-Just call a function from structure ProgressBar (examples are in the testbar.cc macro)
+Just call a function using structure ProgressBar (examples are in the testbar.cc macro)
