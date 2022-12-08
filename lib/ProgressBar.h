@@ -1,24 +1,33 @@
+#pragma once
+
 #include <iostream>
 #include <sys/ioctl.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "../lib/Colors.h"
 
-struct{
+#include "Colors.h"
+#include "StrTool.h"
 
+struct
+{
 	struct winsize w;
+	int barWidth;
+
 	float barStep = 0.01;
 	float barProgress = 0.;
-	int barWidth;
+
+	int precision = 2;
 
 	void Print(std::string color, std::string left_border, std::string complete, std::string next_complete, std::string not_complete, std::string right_border, float progress, std::string end = "")
 	{	
 		if (progress < barProgress - 1E-15) return;
+
+		std::string progress_perc = FloatToStrNf(progress * 100.0, 2);
 		
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-		if (w.ws_col < 120) barWidth = w.ws_col/1.2;
-		else barWidth = 100;
-	
+		if (w.ws_col < 100) barWidth = w.ws_col - 4 - progress_perc.length() - 10;
+		else barWidth = 96 - progress_perc.length();	
+
 		barProgress += barStep;
 
 		int pos = barWidth * progress;
@@ -32,8 +41,6 @@ struct{
 			else std::cout << not_complete;
 		}
 		std::cout << color << right_border;
-
-		int progress_perc = (int) (progress * 100.0);
 
 		std::cout << " " << OutputColor.bold_white << "[" << progress_perc << "%]" << OutputColor.reset << " ";
 
@@ -111,4 +118,9 @@ struct
 	{
 		GenericBar.Print(OutputColor.bold_red, "☭", "✭", "☆", " ", "☭", progress, "☭");
 	}	
+
+	void Reset()
+	{
+		GenericBar.barProgress = 0;
+	}
 } ProgressBar;

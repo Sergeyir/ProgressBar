@@ -21,7 +21,7 @@ int testbar()
 		//ProgressBar.GachiMuchi(progress);
 		//ProgressBar.Communism(progress);
 
-		usleep(1e3);
+		usleep(1e5);
 	}
 	return 0;
 }
