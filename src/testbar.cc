@@ -5,13 +5,13 @@ int testbar()
 {
 	for (double progress = 0; progress <= 1.0001; progress += 0.01)
 	{
-		ProgressBar.Default(progress);
+		//ProgressBar.Default(progress);
 		//ProgressBar.ImprovedDefault(progress);
 		//ProgressBar.Fancy(progress);
 		//ProgressBar.Fancy1(progress);
 		//ProgressBar.Fancy2(progress);
 		//ProgressBar.Wave(progress);
-		//ProgressBar.Block(progress);
+		ProgressBar.Block(progress);
 		//ProgressBar.Block1(progress);
 		//ProgressBar.Block2(progress);
 		//ProgressBar.Block3(progress);
@@ -21,7 +21,7 @@ int testbar()
 		//ProgressBar.GachiMuchi(progress);
 		//ProgressBar.Communism(progress);
 
-		usleep(1e5);
+		usleep(1e3);
 	}
 	return 0;
 }

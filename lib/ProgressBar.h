@@ -1,14 +1,23 @@
 #include <iostream>
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "../lib/Colors.h"
 
 struct{
+
+	struct winsize w;
 	float barStep = 0.01;
 	float barProgress = 0.;
-	int barWidth = 80;
+	int barWidth;
 
 	void Print(std::string color, std::string left_border, std::string complete, std::string next_complete, std::string not_complete, std::string right_border, float progress, std::string end = "")
-	{
+	{	
 		if (progress < barProgress - 1E-15) return;
+		
+		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+		if (w.ws_col < 120) barWidth = w.ws_col/1.2;
+		else barWidth = 100;
 	
 		barProgress += barStep;
 
