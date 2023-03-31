@@ -138,4 +138,9 @@ struct
 		GenericBar.barStep = step;
 		GenericBar.barProgress = -step/2.;
 	}
+	void SetPrecision(int precision)
+	{
+		GenericBar.precision = precision;
+	}
+	
 } ProgressBar;
