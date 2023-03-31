@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 #include "Colors.h"
-#include "../../EssentLib/lib/StrTool.h"
+#include "StrTool.h"
 
 struct
 {
