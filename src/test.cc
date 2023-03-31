@@ -1,9 +1,9 @@
 #include "../lib/ProgressBar.h"
 #include <unistd.h>
 
-int testbar()
+int main()
 {
-	for (double progress = 0; progress <= 1.0001; progress += 0.01)
+	for (double progress = 0; progress <= 1.00001; progress += 0.01)
 	{
 		//ProgressBar.Default(progress);
 		//ProgressBar.ImprovedDefault(progress);
