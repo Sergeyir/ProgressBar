@@ -27,8 +27,6 @@ struct
 
 		barProgress = progress - barStep;
 		
-		std::cout << progress << " " << barProgress << std::endl;
-
 		std::string progress_perc = DtoStr((barProgress + barStep) * 100.0, precision);
 		
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
