@@ -16,7 +16,7 @@ struct
 	double barStep = 0.01;
 	double barProgress = -0.01;
 	
-	const int precision = 0;
+	int precision = 0;
 
 	void Print(std::string color, std::string left_border, std::string complete, 
 		std::string next_complete, std::string not_complete, std::string right_border, 
