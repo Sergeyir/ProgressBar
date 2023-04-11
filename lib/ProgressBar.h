@@ -32,7 +32,7 @@ struct
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		
 		if (w.ws_col < 100) barWidth = w.ws_col - 4 - progress_perc.length() - 10;
-		else barWidth = 96 - progress_perc.length();	
+		else barWidth = 94 - progress_perc.length();	
 
 		barProgress += barStep;
 
