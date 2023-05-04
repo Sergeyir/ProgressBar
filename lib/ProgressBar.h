@@ -38,7 +38,7 @@ class ProgressBar
 
 	std::string bar_color;
 	std::string left_border, right_border;
-	char complete, next_complete, not_complete;
+	std::string complete, next_complete, not_complete;
 	
 	int default_bar_width;
 	
@@ -48,53 +48,57 @@ class ProgressBar
 
 	struct winsize w;
 
+	int utf8_strlen(const std::string& str)
+	{
+		int len = 0;
+		for (int i=0; i < str.length(); i++, len++)
+		{
+			const unsigned char c = (unsigned char) str[i];
+			if      (c>=0   && c<=127) i+=0;
+			else if ((c & 0xE0) == 0xC0) i+=1;
+			else if ((c & 0xF0) == 0xE0) i+=2;
+			else if ((c & 0xF8) == 0xF0) i+=3;
+			else return 0;
+		}
+		return len;
+	}
+
 	public:
 
-	ProgressBar()
-	{
-		std::array<std::string, 6> style_par = PBStyle::map["DEFAULT"];
-
-		left_border = style_par[0];
-		right_border = style_par[4];
-		
-		complete = style_par[1][0];
-		next_complete = style_par[2][0];
-		not_complete = style_par[3][0];
-
-		bar_color = style_par[5];
-
-	}
-	
 	ProgressBar(std::string style = "DEFAULT", std::string left_text = "", std::string color = "", const int default_width = 100)
 	{
 		for (char &c : style) c = toupper(c);
 		if (PBStyle::map.find(style) == PBStyle::map.end()) 
 		{
-			std::cout << OutputColor::bold_magenta << "Warning" << OutputColor::reset << 
-				"Style \"" << style << "\" was not found; changing to DEFAULT" << std::endl;
+			std::cout << OutputColor::bold_magenta << "Warning:" << OutputColor::reset << 
+				"Style \"" << style << "\" was not found; changing to \"DEFAULT\"" << std::endl;
+			style = "DEFAULT";
 		}
 
-		std::array<std::string, 6> style_par = PBStyle::map["DEFAULT"];
+		std::array<std::string, 6> style_par = PBStyle::map[style.c_str()];
 
 		left_border = style_par[0];
 		right_border = style_par[4];
 		
-		complete = style_par[1][0];
-		next_complete = style_par[2][0];
-		not_complete = style_par[3][0];
+		complete = style_par[1];
+		next_complete = style_par[2];
+		not_complete = style_par[3];
 
 		if (color == "") bar_color = style_par[5];
 		else bar_color = color;
 
 		text = left_text;
 		
-		default_bar_width = default_width - left_text.length() - 
-			left_border.length() - right_border.length() - 7;
+		int llen = 0;
+
+		default_bar_width = default_width - utf8_strlen(left_text) - 
+			utf8_strlen(left_border) - utf8_strlen(right_border) - 8;
 	}
 
-	ProgressBar(std::string custom_left_border, std::string custom_right_border,
-		const char custom_complete, const char custom_next_complete, const char custom_not_complete,
-		std::string color, std::string left_text = "", const int default_width = 100)
+	ProgressBar(std::string custom_left_border, const char custom_complete, 
+		const char custom_next_complete, const char custom_not_complete,
+		std::string custom_right_border, std::string color, 
+		std::string left_text = "", const int default_width = 100)
 	{
 		left_border = custom_left_border;
 		right_border = custom_right_border;
@@ -107,8 +111,8 @@ class ProgressBar
 
 		text = left_text;
 
-		default_bar_width = default_width - left_text.length() - 
-			left_border.length() - right_border.length() - 7;
+		default_bar_width = default_width - utf8_strlen(left_text) - 
+			utf8_strlen(left_border) - utf8_strlen(right_border) - 8;
 	}
 
 	~ProgressBar(){}
@@ -132,7 +136,46 @@ class ProgressBar
 
 		int pos = static_cast<int>(width * bar_progress);
 
-		std::cout << OutputColor::bold_white << text << " " << bar_color << left_border;
+		std::cout << " " << OutputColor::bold_white << text << " " << bar_color << left_border;
+
+		for (int count = 0; count < width; count++)
+		{
+			if (count == pos) std::cout << next_complete << OutputColor::reset;
+			else if (count < pos) std::cout << complete;
+			else std::cout << not_complete;
+		}
+		std::cout << bar_color << right_border;
+
+		std::cout << " " << OutputColor::bold_white << 
+			"[" << progress_perc << "%]" << OutputColor::reset << " ";
+
+		std::cout << " \r";
+		std::cout.flush();
+
+		if (bar_progress + bar_step/2. >= 1) std::cout << std::endl;
+	}
+
+	void Clear()
+	{
+		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+		const int width = w.ws_col - progress_perc.length();
+		else width = default_bar_width;
+		for (int i = 0; i < widht; i++) std::cout << " ";
+	}
+
+	void RePrint()
+	{	
+		std::string progress_perc = DtoStr((bar_progress + bar_step) * 100.0, bar_precision);
+		
+		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+		
+		int width;
+		if (w.ws_col < default_bar_width) width = w.ws_col - progress_perc.length();
+		else width = default_bar_width - progress_perc.length();
+
+		int pos = static_cast<int>(width * bar_progress);
+
+		std::cout << " " << OutputColor::bold_white << text << " " << bar_color << left_border;
 
 		for (int count = 0; count < width; count++)
 		{
