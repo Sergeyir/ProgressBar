@@ -2,6 +2,14 @@
 
 This is a simple tool that allows you to use the progress bar in your c++ projects that run in terminal
 
+# Installing
+
+Run in your working directory to download
+
+'''sh
+git clone https://github.com/Sergeyir/ProgressBar
+'''
+
 # Usage
 
 First place lib folder in you working directory. Then include file ProgressBar.h in you code :
