@@ -158,9 +158,8 @@ class ProgressBar
 	void Clear()
 	{
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-		const int width = w.ws_col - progress_perc.length();
-		else width = default_bar_width;
-		for (int i = 0; i < widht; i++) std::cout << " ";
+		const int width = w.ws_col;
+		for (int i = 0; i < width; i++) std::cout << " ";
 	}
 
 	void RePrint()
