@@ -55,22 +55,22 @@ Keys are passed as parameters in constuctor and can contain both lower and upper
 
 # Predefined colors
 
-- reset (default)
-- black
-- red
-- green
-- yellow
-- blue
-- magenta
-- cyan
-- white
-- bold_black
-- bold_red
-- bold_green
-- bold_yellow
-- bold_blue
-- bold_magenta
-- bold_cyan
-- bold_white
+- OutputColor::reset (default)
+- OutputColor::black
+- OutputColor::red
+- OutputColor::green
+- OutputColor::yellow
+- OutputColor::blue
+- OutputColor::magenta
+- OutputColor::cyan
+- OutputColor::white
+- OutputColor::bold_black
+- OutputColor::bold_red
+- OutputColor::bold_green
+- OutputColor::bold_yellow
+- OutputColor::bold_blue
+- OutputColor::bold_magenta
+- OutputColor::bold_cyan
+- OutputColor::bold_white
 
-The colors are binded to the terminal colors thus may change if you change colors in terminal.
+Colors are binded to the terminal colors thus may change if you change colors in terminal.
