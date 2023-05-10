@@ -41,6 +41,7 @@ class ProgressBar
 	std::string complete, next_complete, not_complete;
 	
 	int default_bar_width;
+	int orig_default_width;
 	
 	double bar_step = 0.01;
 	double bar_progress = -0.01;
@@ -93,6 +94,8 @@ class ProgressBar
 
 		default_bar_width = default_width - utf8_strlen(left_text) - 
 			utf8_strlen(left_border) - utf8_strlen(right_border) - 8;
+
+		orig_default_width = default_width;
 	}
 
 	ProgressBar(std::string custom_left_border, const char custom_complete, 
@@ -113,6 +116,8 @@ class ProgressBar
 
 		default_bar_width = default_width - utf8_strlen(left_text) - 
 			utf8_strlen(left_border) - utf8_strlen(right_border) - 8;
+		
+		orig_default_width = default_width;
 	}
 
 	~ProgressBar(){}
@@ -129,8 +134,9 @@ class ProgressBar
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		
 		int width;
-		if (w.ws_col < default_bar_width) width = w.ws_col - progress_perc.length();
-		else width = default_bar_width - progress_perc.length();
+		if (default_bar_width < w.ws_col - 10) width = w.ws_col - 10 - orig_default_width + default_bar_width - utf8_strlen(progress_perc);
+		else width = default_bar_width - utf8_strlen(progress_perc);
+		
 
 		bar_progress += bar_step;
 
@@ -169,8 +175,9 @@ class ProgressBar
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		
 		int width;
-		if (w.ws_col < default_bar_width) width = w.ws_col - progress_perc.length();
-		else width = default_bar_width - progress_perc.length();
+		
+		if (default_bar_width < w.ws_col - 10) width = w.ws_col - 10 - orig_default_width + default_bar_width - utf8_strlen(progress_perc);
+		else width = default_bar_width - utf8_strlen(progress_perc);
 
 		int pos = static_cast<int>(width * bar_progress);
 
