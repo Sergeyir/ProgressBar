@@ -60,7 +60,7 @@ make test_style && ./test_style name1 name2 ...
 		const char custom_nex_complete, 
 		const char custom_not_complete, 
 		std::string custom_right_border, 
-		std::string color)
+		std::string color) {};
 ```
 
 - Sets the width of the bar
