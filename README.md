@@ -39,6 +39,13 @@ Using the first one you can choose one of predefined style options. And with the
 ```sh
 make test && ./test
 ```
+
+Also you can print the bar with any style using an example test_style.cc. To do this run
+
+```sh
+make test_style && ./test_style name1 name2 ...
+```
+
 # You can change the parameters of already created ProgressBar object using the ProgressBar methods:
 
 - Changes the style of the ProgressBar object
