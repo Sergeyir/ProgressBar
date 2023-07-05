@@ -24,15 +24,46 @@ Then create ProgressBar object with one of the constructors:
 ProgressBar::ProgressBar(std::string style = "DEFAULT", std::string left_text = "", 
 	std::string color = "", const int default_width = 100) {};
 
-ProgressBar(std::string custom_left_border, std::string custom_right_border,
-	const char custom_complete, const char custom_next_complete, const char custom_not_complete,
-	std::string color, std::string left_text = "", const int default_width = 100) {};
+ProgressBar(std::string custom_left_border, 
+	std::string custom_right_border,
+	const char custom_complete, 
+	const char custom_next_complete, 
+	const char custom_not_complete,
+	std::string color, 
+	std::string left_text = "", 
+	const int default_width = 100) {};
 ```
 
 Using the first one you can choose one of predefined style options. And with the second one you can create ProgressBar object with a custom style. Then all you need to do is to call *ProgressBar::Print(const double progress)* where you need it to use. You can see the example in stc/test.cc how to use ProgressBar and run it by typing
 
 ```sh
 make test && ./test
+```
+# You can change the parameters of already created ProgressBar object using the ProgressBar methods:
+
+- Changes the style of the ProgressBar object
+```c++
+	ProgressBar::SetStyle(std::string style, std::string color) {};
+```
+	
+- Changes the style of the ProgressBar object to a custom style
+```c++
+	ProgressBar::SetCustomStyle(std::string custom_left_border, 
+		const char custom_complete, 
+		const char custom_nex_complete, 
+		const char custom_not_complete, 
+		std::string custom_right_border, 
+		std::string color)
+```
+
+- Sets the width of the bar
+```c++
+	ProgressBar::SetWidth(const int default_width) {};
+```
+
+- Sets the text to the left of the bar
+```c++
+	ProgressBar::SetText(std::string left_text) {};
 ```
 
 **If you type something it terminal before the progress bar has finished it will owerrite it**. But if you need to print something with progress bar not finished and to avoid owerriting you need to call *ProgressBar::Clear()* to clear the progress bar, than print the text you needed to print, and finally call *ProgressBar::RePrint()*.

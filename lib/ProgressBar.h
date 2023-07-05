@@ -64,17 +64,34 @@ class ProgressBar
 		return len;
 	}
 
-	public:
-
-	ProgressBar(std::string style = "DEFAULT", std::string left_text = "", std::string color = "", const int default_width = 100)
+	std::string CheckStyle(std::string style)
 	{
-		for (char &c : style) c = toupper(c);
 		if (PBStyle::map.find(style) == PBStyle::map.end()) 
 		{
-			std::cout << OutputColor::bold_magenta << "Warning:" << OutputColor::reset << 
+			std::cout << OutputColor::bold_magenta << "Warning: " << OutputColor::reset << 
 				"Style \"" << style << "\" was not found; changing to \"DEFAULT\"" << std::endl;
 			style = "DEFAULT";
+
+			std::cout << "You can use one of the predefined styles: " << std::endl;
+
+			for (auto const &x : PBStyle::map)
+			{
+				std::cout << " " << x.first << std::endl;
+			}
+			
+			std::cout << "Or create your custom style with the constuctor for the cutstom style" << std::endl;
+			std::cout << "If you don't need the style you can leave the object declaration constructor empty; " << std::endl; 
+			std::cout << "the style will be automaticaly set to default without printing the warning" << std::endl;
 		}
+
+		return style;
+	}
+
+	public:
+
+	void SetStyle(std::string style, std::string color)
+	{
+		style = CheckStyle(style);
 
 		std::array<std::string, 6> style_par = PBStyle::map[style.c_str()];
 
@@ -87,21 +104,11 @@ class ProgressBar
 
 		if (color == "") bar_color = style_par[5];
 		else bar_color = color;
-
-		text = left_text;
-		
-		int llen = 0;
-
-		default_bar_width = default_width - utf8_strlen(left_text) - 
-			utf8_strlen(left_border) - utf8_strlen(right_border) - 8;
-
-		orig_default_width = default_width;
 	}
 
-	ProgressBar(std::string custom_left_border, const char custom_complete, 
+	void SetCustomStyle(std::string custom_left_border, const char custom_complete, 
 		const char custom_next_complete, const char custom_not_complete,
-		std::string custom_right_border, std::string color, 
-		std::string left_text = "", const int default_width = 100)
+		std::string custom_right_border, std::string color)
 	{
 		left_border = custom_left_border;
 		right_border = custom_right_border;
@@ -111,13 +118,47 @@ class ProgressBar
 		not_complete = custom_not_complete;
 
 		bar_color = color;
+	}
 
-		text = left_text;
-
-		default_bar_width = default_width - utf8_strlen(left_text) - 
+	void SetWidth(const int default_width)
+	{
+		default_bar_width = default_width - utf8_strlen(text) - 
 			utf8_strlen(left_border) - utf8_strlen(right_border) - 8;
+
+		orig_default_width = default_width;
+	}
+
+	void SetText(std::string left_text)
+	{
+		text = left_text;
+		SetWidth(orig_default_width);
+	}
+
+	ProgressBar(std::string style = "DEFAULT", std::string left_text = "", std::string color = "", const int default_width = 100)
+	{
+		for (char &c : style) c = toupper(c);
+
+		SetStyle(style, color);
+		orig_default_width = default_width;
+		//SetText method recalculates the width of the bar
+		SetText(left_text);
+	}
+
+	ProgressBar(std::string custom_left_border, const char custom_complete, 
+		const char custom_next_complete, const char custom_not_complete,
+		std::string custom_right_border, std::string color, 
+		std::string left_text = "", const int default_width = 100)
+	{
+
+		SetCustomStyle(custom_left_border, 
+			custom_complete, 
+			custom_next_complete, 
+			custom_not_complete, 
+			custom_right_border, 
+			color);
 		
 		orig_default_width = default_width;
+		SetText(left_text);
 	}
 
 	~ProgressBar(){}
@@ -137,7 +178,6 @@ class ProgressBar
 		if (default_bar_width > w.ws_col - 10) width = w.ws_col - 10 - orig_default_width + default_bar_width - utf8_strlen(progress_perc);
 		else width = default_bar_width - utf8_strlen(progress_perc);
 		
-
 		bar_progress += bar_step;
 
 		int pos = static_cast<int>(width * bar_progress);
