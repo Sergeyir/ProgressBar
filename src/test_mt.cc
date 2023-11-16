@@ -17,13 +17,13 @@ int main()
 	std::cout << "Running this program on " << nthreads << " cores" << std::endl;
 
 	double ncalls = 0;
-	const double max_ncalls = 1e2*nthreads - 1.;
+	const double max_ncalls = 5e2*nthreads - 1.;
 
 	bool lock = 0;
 	
 	auto ThrCall = [&]()
 	{
-		for (int i = 0; i < 1e2; i++)
+		for (int i = 0; i < 5e2; i++)
 		{
 			if (!lock) 
 			{
@@ -35,8 +35,6 @@ int main()
 			do_something();
 			ncalls += 1.;
 		}
-		
-		std::cout << "Thread " << std::this_thread::get_id() << " finished running" << std::endl;
 	};
 	
 	std::vector<std::unique_ptr<std::thread>> thr;
