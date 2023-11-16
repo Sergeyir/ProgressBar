@@ -1,10 +1,14 @@
 test: test.cc
-	g++ test.cc -o test
+	g++ test.cc -Wall -Werror -Wpedantic -o test.exe
 
 test_style: test_style.cc
-	g++ test_style.cc -o test_style
+	g++ test_style.cc -Wall -Werror -Wpedantic -o test_style.exe
+
+test_mt: test_mt.cc
+	g++ test_mt.cc -Wall -Werror -Wpedantic -o test_mt.exe
 
 clean: 
 	rm -f \
-	test \
-	test_style
+	test.exe\
+	test_style.exe\
+	test_mt.exe

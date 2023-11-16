@@ -37,13 +37,19 @@ ProgressBar(std::string custom_left_border,
 Using the first one you can choose one of predefined style options. And with the second one you can create ProgressBar object with a custom style. Then all you need to do is to call *ProgressBar::Print(const double progress)* where you need it to use. You can see the example in stc/test.cc how to use ProgressBar and run it by typing
 
 ```sh
-make test && ./test
+make test && ./test.exe
 ```
 
 Also you can print the bar with any style using an example test_style.cc. To do this run
 
 ```sh
-make test_style && ./test_style name1 name2 ...
+make test_style && ./test_style.exe name1 name2 ...
+```
+
+There is also an example of multithread realization
+
+```sh
+make test_mt && ./test_mt.exe
 ```
 
 # You can change the parameters of already created ProgressBar object using the ProgressBar methods:

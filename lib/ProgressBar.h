@@ -32,7 +32,7 @@ namespace PBStyle
 
 class ProgressBar
 {
-	private:
+	protected:
 		
 	std::string text;
 
@@ -52,7 +52,7 @@ class ProgressBar
 	int utf8_strlen(const std::string& str)
 	{
 		int len = 0;
-		for (int i=0; i < str.length(); i++, len++)
+		for (int i=0; i < static_cast<int>(str.length()); i++, len++)
 		{
 			const unsigned char c = (unsigned char) str[i];
 			if      (c>=0   && c<=127) i+=0;
