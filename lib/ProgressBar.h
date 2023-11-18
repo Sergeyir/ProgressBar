@@ -182,7 +182,7 @@ class ProgressBar
 
 		int pos = static_cast<int>(width * bar_progress);
 
-		std::cout << " " << OutputColor::bold_white << text << " " << bar_color << left_border;
+		std::cout << "\r " << OutputColor::bold_white << text << " " << bar_color << left_border;
 
 		for (int count = 0; count < width; count++)
 		{
