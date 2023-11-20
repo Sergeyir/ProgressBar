@@ -46,7 +46,7 @@ Also you can print the bar with any style using an example test_style.cc. To do 
 make test_style && ./test_style.exe name1 name2 ...
 ```
 
-There is also an example of multithread implementation. It doesn't use the lock guard for the progress increment therefore the ProgressBar works fast. Though the value of progress might be a bit inaccurate (up to 1-2% on 4 threads) when using it in multithreads projects, the ProgressBar was created with intent to visualize the workflow of the program, not to show very accurate values.
+There is also an example of multithread implementation. It doesn't use the lock guard for the progress increment therefore the ProgressBar works fast. Though the value of progress might be a bit inaccurate (up to 1-2% on 4 threads) when using it in multithread projects, the ProgressBar was created with intent to visualize the workflow of the program, not to show very accurate values.
 
 ```sh
 make test_mt && ./test_mt.exe
