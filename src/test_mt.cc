@@ -17,20 +17,13 @@ int main()
 	std::cout << "Running this program on " << nthreads << " cores" << std::endl;
 
 	double ncalls = 0;
-	const double max_ncalls = 5e2*nthreads - 1.;
-
-	bool lock = 0;
+	const double max_ncalls = 5e2*nthreads;
 	
 	auto ThrCall = [&]()
 	{
 		for (int i = 0; i < 5e2; i++)
 		{
-			if (!lock) 
-			{
-				lock = 1;
-				pbar_mt.Print(ncalls/max_ncalls);
-				lock = 0;
-			}
+			pbar_mt.Print(ncalls/max_ncalls);
 			
 			do_something();
 			ncalls += 1.;
@@ -50,7 +43,7 @@ int main()
 		thr.pop_back();
 	}
 
-	pbar_mt.Print(1.1);
+	pbar_mt.Print(1.);
 
 	return 0;
 }
