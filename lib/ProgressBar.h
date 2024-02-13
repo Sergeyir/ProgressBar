@@ -175,8 +175,8 @@ class ProgressBar
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		
 		int width;
-		if (default_bar_width > w.ws_col - 10) width = w.ws_col - 10 - orig_default_width + default_bar_width - utf8_strlen(progress_perc);
-		else width = default_bar_width - utf8_strlen(progress_perc);
+		if (default_bar_width > w.ws_col - 4) width = w.ws_col - 4 - orig_default_width + default_bar_width - utf8_strlen(progress_perc);
+		else width = default_bar_width - utf8_strlen(progress_perc)-4;
 		
 		bar_progress += bar_step;
 
@@ -215,8 +215,8 @@ class ProgressBar
 		
 		int width;
 		
-		if (default_bar_width > w.ws_col - 10) width = w.ws_col - 10 - orig_default_width + default_bar_width - utf8_strlen(progress_perc);
-		else width = default_bar_width - utf8_strlen(progress_perc);
+		if (default_bar_width > w.ws_col - 4) width = w.ws_col - 4 - orig_default_width + default_bar_width - utf8_strlen(progress_perc);
+		else width = default_bar_width - utf8_strlen(progress_perc)-4;
 
 		int pos = static_cast<int>(width * bar_progress);
 
