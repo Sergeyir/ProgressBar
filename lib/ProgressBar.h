@@ -170,7 +170,7 @@ class ProgressBar
 
 		bar_progress = progress - bar_step;
 		
-		std::string progress_perc = DtoStr((bar_progress + bar_step) * 100.0, bar_precision);
+		std::string progress_perc = ProgressBarTools::DtoStr((bar_progress + bar_step) * 100.0, bar_precision);
 		
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		
@@ -209,7 +209,7 @@ class ProgressBar
 
 	void RePrint()
 	{	
-		std::string progress_perc = DtoStr((bar_progress + bar_step) * 100.0, bar_precision);
+		std::string progress_perc = ProgressBarTools::DtoStr((bar_progress + bar_step) * 100.0, bar_precision);
 		
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		
@@ -224,13 +224,13 @@ class ProgressBar
 
 		for (int count = 0; count < width; count++)
 		{
-			if (count == pos) to_print + next_complete + OutputColor::reset;
-			else if (count < pos) to_print + complete;
-			else to_print + not_complete;
+			if (count == pos) to_print += next_complete + OutputColor::reset;
+			else if (count < pos) to_print += complete;
+			else to_print += not_complete;
 		}
-		to_print + bar_color + right_border;
+		to_print += bar_color + right_border;
 
-		to_print + " " + OutputColor::bold_white + 
+		to_print += " " + OutputColor::bold_white + 
 			"[" + progress_perc + "%]" + OutputColor::reset + " ";
 
 		std::cout << " \r";
