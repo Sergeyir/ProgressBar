@@ -89,7 +89,12 @@ class ProgressBar
 
 	public:
 
-	void SetStyle(std::string style, std::string color)
+	void SetColor(std::string color)
+	{
+		bar_color = color;
+	}
+
+	void SetStyle(std::string style, std::string color = "")
 	{
 		style = CheckStyle(style);
 
