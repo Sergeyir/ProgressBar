@@ -187,19 +187,20 @@ class ProgressBar
 
 		int pos = static_cast<int>(width * bar_progress);
 
-		std::string to_print = "\r " + OutputColor::bold_white + text + " " + bar_color + left_border;
+		std::stringstream to_print;
+		to_print << "\r " << OutputColor::bold_white << text << " " << bar_color << left_border;
 
 		for (int count = 0; count < width; count++)
 		{
-			if (count == pos) to_print += next_complete + OutputColor::reset;
-			else if (count < pos) to_print += complete;
-			else to_print += not_complete;
+			if (count == pos) to_print << next_complete + OutputColor::reset;
+			else if (count < pos) to_print << complete;
+			else to_print << not_complete;
 		}
-		to_print += bar_color + right_border;
+		to_print << bar_color + right_border;
 
-		to_print += " " + OutputColor::bold_white + "[" + progress_perc + "%]" + OutputColor::reset + " ";
+		to_print << " " + OutputColor::bold_white + "[" + progress_perc + "%]" + OutputColor::reset + " ";
 
-		std::cout << to_print << " \r";
+		std::cout << to_print.str() << " \r";
 		std::cout.flush();
 
 		if (bar_progress + bar_step/2. >= 1) std::cout << std::endl;
@@ -225,20 +226,21 @@ class ProgressBar
 
 		int pos = static_cast<int>(width * bar_progress);
 
-		std::string to_print = "\r " + OutputColor::bold_white + text + " " + bar_color + left_border;
+		std::stringstream to_print;
+		to_print << "\r " << OutputColor::bold_white << text << " " << bar_color << left_border;
 
 		for (int count = 0; count < width; count++)
 		{
-			if (count == pos) to_print += next_complete + OutputColor::reset;
-			else if (count < pos) to_print += complete;
-			else to_print += not_complete;
+			if (count == pos) to_print << next_complete + OutputColor::reset;
+			else if (count < pos) to_print << complete;
+			else to_print << not_complete;
 		}
-		to_print += bar_color + right_border;
+		to_print << bar_color << right_border;
 
-		to_print += " " + OutputColor::bold_white + 
-			"[" + progress_perc + "%]" + OutputColor::reset + " ";
+		to_print << " " << OutputColor::bold_white << 
+			"[" << progress_perc << "%]" << OutputColor::reset << " ";
 
-		std::cout << " \r";
+		std::cout << to_print.str() << " \r";
 		std::cout.flush();
 
 		if (bar_progress + bar_step/2. >= 1) std::cout << std::endl;
