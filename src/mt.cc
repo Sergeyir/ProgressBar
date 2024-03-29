@@ -14,7 +14,7 @@ int main()
 	ProgressBar pbar_mt = ProgressBar("FANCY", "Multithread");
 	const auto nthreads = std::thread::hardware_concurrency();
 
-	std::cout << "Running this program on " << nthreads << " cores" << std::endl;
+	std::cout << "Running this program on " << nthreads << " threads" << std::endl;
 
 	double ncalls = 0;
 	const double max_ncalls = 5e2*nthreads;
