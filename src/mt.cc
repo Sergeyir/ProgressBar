@@ -46,16 +46,16 @@ int main()
 	//therefore the progress bar is displayed incorrectly
 	std::thread pbar_thread(PbarCall);
 	
-	std::vector<std::unique_ptr<std::thread>> thr;
+	std::vector<std::thread> thr;
 	
 	for (auto i = nthreads; i != 0; i--)
 	{
-		thr.push_back(std::unique_ptr<std::thread>(new std::thread(ThrCall)));
+		thr.push_back(std::thread(ThrCall));
 	}
 	
 	while (!thr.empty()) 
 	{
-		thr.back()->join(); 
+		thr.back().join(); 
 		thr.pop_back();
 	}
 
