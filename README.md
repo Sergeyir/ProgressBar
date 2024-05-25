@@ -12,7 +12,7 @@ git clone https://github.com/Sergeyir/ProgressBar
 
 # Usage
 
-First place lib folder in you working directory. Then include file ProgressBar.h in you code :
+Run ```sh make install ``` in ProgressBar directory. You can use the compiled libraries as in examples directory
 
 ```c++
 #include "/working_dir/lib/ProgressBar.h"
@@ -34,7 +34,7 @@ ProgressBar(std::string custom_left_border,
 	const int default_width = 100) {};
 ```
 
-Using the first one you can choose one of predefined style options. And with the second one you can create ProgressBar object with a custom style. Then all you need to do is to call *ProgressBar::Print(const double progress)* where you need it to use. You can see the example in stc/test.cc how to use ProgressBar and run it by typing
+Using the first one you can choose one of predefined style options. And with the second one you can create ProgressBar object with a custom style. Then all you need to do is to call *ProgressBar::Print(const double progress)* where you need it to use. You can see the example in examples/test.cc how to use ProgressBar and run it by typing
 
 ```sh
 make test && ./test.exe

@@ -1,4 +1,3 @@
-#include "../lib/ProgressBar.h"
 #include <unistd.h>
 
 void do_something() {usleep(5e3);}

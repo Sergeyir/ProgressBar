@@ -1,4 +1,6 @@
 #pragma once
+//#ifndef OUTPUT_COLOR_HPP
+//#define OUTPUT_COLOR_HPP
 
 #include <string>
 
@@ -23,3 +25,5 @@ namespace OutputColor
 	const std::string bold_cyan = "\033[1m\033[36m";
 	const std::string bold_white = "\033[1m\033[37m";
 }
+
+//#endif

@@ -1,4 +1,3 @@
-#include "../lib/ProgressBar.h"
 #include <unistd.h>
 #include <memory>
 #include <vector>
@@ -29,6 +28,10 @@ int main()
 		}
 	};
 
+	//pbar needs to have it's own thread for it 
+	//to be consistent as frequent overwriting on
+	//multiple cores leads to interference and 
+	//therefore the progress bar is displayed incorrectly
 	auto PbarCall = [&]()
 	{
 		ProgressBar pbar_mt = ProgressBar("FANCY", "Multithread");
@@ -40,10 +43,6 @@ int main()
 		pbar_mt.Print(1.);
 	};
 
-	//pbar needs to have it's own thread for it 
-	//to be consistent as frequent overwriting on
-	//multiple cores leads to interference and 
-	//therefore the progress bar is displayed incorrectly
 	std::thread pbar_thread(PbarCall);
 	
 	std::vector<std::thread> thr;

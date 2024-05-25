@@ -1,6 +1,5 @@
 //this macros tests the speed of progress bar printing
 
-#include "../lib/ProgressBar.h"
 #include <unistd.h>
 #include <chrono>
 
