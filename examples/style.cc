@@ -1,5 +1,7 @@
 #include <unistd.h>
 
+#include "../include/ProgressBar.hpp"
+
 void do_something() {usleep(5e3);}
 
 int main(int argc, char *argv[])

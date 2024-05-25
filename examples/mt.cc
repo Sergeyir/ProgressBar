@@ -3,6 +3,8 @@
 #include <vector>
 #include <thread>
 
+#include "../include/ProgressBar.hpp"
+
 void do_something()
 {
 	std::this_thread::sleep_for(std::chrono::milliseconds(10));

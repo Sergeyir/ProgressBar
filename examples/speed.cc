@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <chrono>
 
+#include "../include/ProgressBar.hpp"
+
 int main()
 {
 	ProgressBar pbar("FANCY");
