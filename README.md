@@ -1,3 +1,9 @@
+##### Table of Contents  
+[Headers](#headers)  
+[Emphasis](#emphasis)  
+...snip...    
+<a name="headers"/>
+
 # Overview
 
 This is a simple fast customizable graphic terminal display that shows you the progress of your process in a form of an ascii horizontal bar
