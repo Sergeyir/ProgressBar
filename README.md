@@ -1,5 +1,5 @@
 ### Table of Contents  
-**[Overview](#Overview)**<br>
+**[Overview](#overview)**<br>
 **[Installing](#Installing)**<br>
 **[Usage](#Usage)**<br>
 **[Changing progress bar parameters](#Changing progress bar parameters)**<br>
