@@ -1,6 +1,10 @@
-##### Table of Contents  
-[Headers](#Overview)  
-[Emphasis](#Installing)  
+## Table of Contents  
+[Overview](#Overview)  
+[Installing](#Installing)  
+[Usage](#Usage)  
+[Changing progress bar parameters](#Changing progress bar parameters)  
+[Predefined styles](#Predefined styles)  
+[Predefined colors](#Predefined colors)  
 <a name="headers"/>
 
 # Overview
@@ -59,7 +63,9 @@ For multithread implementation see examples/mt.cpp. You can also make it and run
 
 **Warning!** Do not use methods *ProgressBar::Clear()* and *ProgressBar::RePrint()* too often - it takes a lot of time to reprint the same line so if you intend to print a lot of text other than progress bar - it is better not to use it completely. In any different case use only *ProgressBar::Print()* which when called many times is very quick.
 
-# You can change the parameters of already created ProgressBar object using the ProgressBar methods:
+# Changing progress bar parameters
+
+You can change the parameters of already created ProgressBar object using the ProgressBar methods:
 
 - Changes the color of the progress bar body
 
@@ -95,7 +101,7 @@ For multithread implementation see examples/mt.cpp. You can also make it and run
 	void ProgressBar::SetText(std::string customText)
 ```
 
-# Keys of predefined progress bar styles
+# Predefined styles
 
 - "DEFAULT"
 - "IMPROVED"
@@ -107,7 +113,7 @@ For multithread implementation see examples/mt.cpp. You can also make it and run
 - "BLOCK1"
 - "BLOCK2"
 
-Keys are passed as parameters in constuctor and can contain both lower and upper case symbols.
+Keys are passed as parameters in a constuctor or in a method ProgressBar::SetSTyle and can contain both lower and upper case symbols.
 
 # Predefined colors
 
