@@ -72,17 +72,17 @@ You can change the parameters of already created ProgressBar object using the Pr
 - Changes the color of the progress bar body
 
 ```c++
-	void SetColor(std::string color)
+   void SetColor(std::string color)
 ```
 
 - Changes the style of the progress bar
 
 ```c++
-	void SetStyle(std::string style, 
+    void SetStyle(std::string style, 
                   std::string color = ""
                   )
 ```
-	
+   
 - Changes the style of the ProgressBar object to a custom style
 ```c++
    void ProgressBar::SetCustomStyle(std::string customLeftBorder, 
@@ -95,12 +95,12 @@ You can change the parameters of already created ProgressBar object using the Pr
 
 - Sets the width of the bar (by default the width equals the number of columns of the terminal)
 ```c++
-	void ProgressBar::SetWidth(const int customWidth)
+   void ProgressBar::SetWidth(const int customWidth)
 ```
 
 - Add the text to the left of the progress bar body
 ```c++
-	void ProgressBar::SetText(std::string customText)
+   void ProgressBar::SetText(std::string customText)
 ```
 
 # Predefined styles
