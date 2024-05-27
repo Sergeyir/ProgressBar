@@ -115,7 +115,7 @@ void ProgressBar::SetText(std::string customText)
 - "BLOCK1"
 - "BLOCK2"
 
-Keys are passed as parameters in a constuctor or in a method ProgressBar::SetSTyle and can contain both lower and upper case symbols.
+Keys are passed as parameters in a constuctor or in a method ProgressBar::SetStyle and can contain both lower and upper case symbols.
 
 # Predefined colors
 
