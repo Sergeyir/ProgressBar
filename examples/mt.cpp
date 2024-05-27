@@ -3,9 +3,9 @@
 #include <vector>
 #include <thread>
 
-#include "../include/PBar.hpp"
+#include "PBar.hpp"
 
-void do_something()
+void DoSomething()
 {
 	std::this_thread::sleep_for(std::chrono::milliseconds(10));
 }
@@ -19,13 +19,13 @@ int main()
 	double ncalls = 0;
 	const double max_ncalls = 5e2*nthreads;
 
-	bool process_finished = false;
+	bool isProcessFinished = false;
 	
 	auto ThrCall = [&]()
 	{
 		for (int i = 0; i < 5e2; i++)
 		{
-			do_something();
+			DoSomething();
 			ncalls += 1.;
 		}
 	};
@@ -36,13 +36,13 @@ int main()
 	//therefore the progress bar is displayed incorrectly
 	auto PbarCall = [&]()
 	{
-		ProgressBar pbar_mt = ProgressBar("FANCY", "Multithread");
-		while (!process_finished)
+		ProgressBar pbarMT = ProgressBar("FANCY", "Multithread");
+		while (!isProcessFinished)
 		{
-			pbar_mt.Print(ncalls/max_ncalls);
+			pbarMT.Print(ncalls/max_ncalls);
 			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 		}
-		pbar_mt.Print(1.);
+		pbarMT.Print(1.);
 	};
 
 	std::thread pbar_thread(PbarCall);
@@ -60,7 +60,7 @@ int main()
 		thr.pop_back();
 	}
 
-	process_finished = true;
+	isProcessFinished = true;
 	pbar_thread.join();
 
 	return 0;

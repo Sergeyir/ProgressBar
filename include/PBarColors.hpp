@@ -1,6 +1,20 @@
-#pragma once
-//#ifndef PBAR_COLOR_HPP
-//#define PBAR_COLOR_HPP
+// $HEADER$
+//------------------------------------------------------------------------------------------------
+//                                    PBar color structure
+//------------------------------------------------------------------------------------------------
+// PBar: progress bar
+//
+// ** Free and open code for anyone to use **
+//
+// Author: Sergei Antsupov
+//
+/**
+ * Set of colors for a PBar
+ **/
+//------------------------------------------------------------------------------------------------
+
+#ifndef PBAR_COLOR_HPP
+#define PBAR_COLOR_HPP
 
 #include <string>
 
@@ -26,4 +40,4 @@ namespace PBarColor
 	const std::string BOLD_WHITE = "\033[1m\033[37m";
 }
 
-//#endif
+#endif

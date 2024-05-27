@@ -1,15 +1,15 @@
 #include <unistd.h>
 
-#include "../include/ProgressBar.hpp"
+#include "PBar.hpp"
 
-void do_something() {usleep(5e3);}
+void DoSomething() {usleep(5e3);}
 
 int main(int argc, char *argv[])
 {
 	if (argc < 2) 
 	{
-		std::cout << OutputColor::bold_red << "Error: " << 
-			OutputColor::reset << "Number of passed arguments is " << argc - 1 << 
+		std::cout << PBarColor::BOLD_RED << "Error: " << 
+			PBarColor::RESET << "Number of passed arguments is " << argc - 1 << 
 			" while at least 1 was expected" << std::endl;
 		exit(1);
 	}
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		for (int j = 0; j < 1e3; j++)
 		{
 			pbar.Print(static_cast<double>(j)/(1e3 - 1.));
-			do_something();
+			DoSomething();
 		}
 	}
 	return 0;

@@ -1,6 +1,20 @@
-#pragma once
-//#ifndef PBARSTYLE_HPP
-//#define PBARSTYLE_HPP
+// $HEADER$
+//------------------------------------------------------------------------------------------------
+//                                    PBar style structure
+//------------------------------------------------------------------------------------------------
+// PBar: progress bar
+//
+// ** Free and open code for anyone to use **
+//
+// Author: Sergei Antsupov
+//
+/**
+ * Set of styles for a PBar
+ **/
+//------------------------------------------------------------------------------------------------
+
+#ifndef PBARSTYLE_HPP
+#define PBARSTYLE_HPP
 
 #include <string>
 #include <map>
@@ -19,11 +33,15 @@ namespace PBStyle
       {"WAVE", {"「", "₪", " ", " ", "」", PBarColor::BOLD_CYAN}},
       {"BLOCK", {"", "▓", "▒", "▒", "", PBarColor::BLUE}},
       {"BLOCK1", {"█", "▓", "▒", "▒", "█", PBarColor::MAGENTA}},
-      {"BLOCK2", {"◢█", "▓", "▒", "▒", "█◤", PBarColor::BOLD_YELLOW}},
-      {"GACHI", {"CUM ", "♂", "○", "♀", " ASS", PBarColor::BOLD_WHITE}},
+      {"BLOCK2", {"◢█", "▓", "▒", "▒", "█◤", PBarColor::BOLD_YELLOW}}
+   };
+
+   static std::map<std::string, std::array<std::string, 6>> secretMap = 
+   {
       {"SUS", {"SUS ", "ඞ", "ච", "○", " SUS", PBarColor::BOLD_RED}},
-      {"COMMUNISM", {"☭", "✭", "☆", " ", "☭", PBarColor::BOLD_RED}}
+      {"COMMUNISM", {"☭", "✭", "☆", " ", "☭", PBarColor::BOLD_RED}},
+      {"GACHI", {"CUM ", "♂", "○", "♀", " ASS", PBarColor::BOLD_WHITE}}
    };
 } 
 
-//#endif
+#endif

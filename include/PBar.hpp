@@ -1,3 +1,19 @@
+// $HEADER$
+//------------------------------------------------------------------------------------------------
+//                                  ProgressBar class declaration
+//------------------------------------------------------------------------------------------------
+// PBar: progress bar
+//
+// ** Free and open code for anyone to use **
+//
+// Author: Sergei Antsupov
+// Email: antsupov0124@gmail.com
+//
+/**
+ * Basic fast customizable graphic terminal display of a process progress in a form of an ascii bar
+ **/
+//------------------------------------------------------------------------------------------------
+
 #ifndef PROGRESS_BAR_HPP
 #define PROGRESS_BAR_HPP
 
@@ -16,50 +32,53 @@ class ProgressBar
 {
    public:
 
-   ProgressBar(std::string style = "DEFAULT", std::string left_text = "", 
-               std::string color = "", const int default_width = 100);
-   ProgressBar(std::string custom_left_border, const char custom_complete, 
-               const char custom_next_complete, const char custom_not_complete,
-               std::string custom_right_border, std::string color, 
-               std::string left_text = "", const int default_width = 100);
+   ProgressBar(std::string style = "DEFAULT", std::string customText = "", std::string color = "");
+   ProgressBar(std::string customLeftBorder, const char customCompleteSymbol, 
+               const char customNextCompleteSymbol, const char customNotCompleteSymbol,
+               std::string customRightBorder, std::string color, std::string customText = "");
    
    void SetColor(std::string color);
    void SetStyle(std::string style, std::string color = "");
-   void SetCustomStyle(std::string custom_left_border, const char custom_complete, 
-                       const char custom_next_complete, const char custom_not_complete,
-                       std::string custom_right_border, std::string color);
-   void SetWidth(const int default_width);
-   void SetText(std::string left_text);
+   void SetCustomStyle(std::string customLeftBorder, const char customCompleteSymbol, 
+                       const char customNextCompleteSymbol, const char customNotCompleteSymbol,
+                       std::string customRightBorder, std::string color);
+   void SetWidth(const short customWidth);
+   void SetText(std::string customText);
    void Print(const double progress);
    void Clear();
    void RePrint();
    void Fill(); 
    void Reset();
    void SetBarStep(const double step);
-   void SetPrecision(const int precision);
+   void SetPrecision(const short precision);
 
-   ~ProgressBar();
+   virtual ~ProgressBar();
    
    protected:
+
+   const short EMPTY_SPACE_WIDTH = 4; //number of empty spaces in columns in a progress bar
       
-   std::string text;
+   std::string barText;
 
-   std::string bar_color;
-   std::string left_border, right_border;
-   std::string complete, next_complete, not_complete;
+   std::string barColor;
+   std::string leftBorder, rightBorder;
+   std::string completeSymbol, nextCompleteSymbol, notCompleteSymbol;
    
-   int default_bar_width;
-   int orig_default_width;
+   //number of columns in the terminal window or the maximum length in columns the progress bar
+   //(including text) can take if specified by the user with SetWidth method
+   short fullWidth;
+   //keeping the length of the body of the bar (borders + body symbols) for simpler calculations
+   short barBodyWidth;
    
-   double bar_step = 0.01;
-   double bar_progress = -0.01;
-   int bar_precision = 0;
+   double barStep = 0.01;
+   double printedProgress = -0.01;
+   short barPrecision = 0;
 
-   struct winsize w;
+   struct winsize terminalWindow;
 
-   int utf8_strlen (const std::string& str);
-   std::string CheckStyle (std::string style);
-   std::string DtoStr (const double val, const int precision = 2);
+   short utf8_strlen (const std::string& str);
+   short GetTerminalWidth();
+   std::string DtoStr (const double val, const short precision = 2);
 };
 
 #endif

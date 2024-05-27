@@ -2,7 +2,7 @@
 
 #include "PBar.hpp"
 
-void do_something() {usleep(1e3);}
+void DoSomething() {usleep(1e3);}
 
 int main()
 {
@@ -13,7 +13,7 @@ int main()
 	for (int i = 0; i < 1e3; i++)
 	{
 		pbar1.Print(static_cast<double>(i)/(1e3 - 1.));
-		do_something();
+		DoSomething();
 	}
 	
 	//Using predefined style
@@ -22,7 +22,7 @@ int main()
 	for (int i = 0; i < 1e3; i++)
 	{
 		pbar2.Print(static_cast<double>(i)/(1e3 - 1.));
-		do_something();
+		DoSomething();
 	}
 
 	//Adding text
@@ -30,7 +30,7 @@ int main()
 	for (int i = 0; i < 1e3; i++)
 	{
 		pbar3.Print(static_cast<double>(i)/(1e3 - 1.));
-		do_something();
+		DoSomething();
 	}
 
 	//Changing color
@@ -38,7 +38,7 @@ int main()
 	for (int i = 0; i < 1e3; i++)
 	{
 		pbar4.Print(static_cast<double>(i)/(1e3 - 1.));
-		do_something();
+		DoSomething();
 	}
 
 	//Creating progress bar with it's own style
@@ -46,7 +46,6 @@ int main()
 	for (int i = 0; i < 1e3; i++)
 	{
 		pbar5.Print(static_cast<double>(i)/(1e3 - 1.));
-		do_something();
+		DoSomething();
 	}
-	return 0;
 }

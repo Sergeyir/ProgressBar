@@ -3,13 +3,13 @@ test: test.cpp
 	$(CXX) test.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o test.exe
 
 style: style.cpp
-	$(CXX) style.cpp $(CXX_FLAGS) $(PBAR_LIB) -o style.exe
+	$(CXX) style.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o style.exe
 
 mt: mt.cpp
-	$(CXX) mt.cpp $(CXX_FLAGS) $(PBAR_LIB) -o mt.exe
+	$(CXX) mt.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o mt.exe
 
 speed: speed.cpp
-	$(CXX) speed.cpp $(CXX_FLAGS) $(PBAR_LIB) -o speed.exe
+	$(CXX) speed.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o speed.exe
 
 clean: 
 	rm *.exe
