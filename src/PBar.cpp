@@ -79,8 +79,8 @@ void ProgressBar::SetStyle(std::string style, std::string color)
       nextCompleteSymbol = stylePar[2];
       notCompleteSymbol = stylePar[3];
 
-      if (color == "") barColor = stylePar[5];
-      else barColor = color;
+      if (color == "") SetColor(stylePar[5]);
+      else SetColor(color);
    }
    else 
    {

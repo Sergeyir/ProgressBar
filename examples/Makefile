@@ -2,6 +2,9 @@
 test: test.cpp
 	$(CXX) test.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o test.exe
 
+possibilities: possibilities.cpp
+	$(CXX) possibilities.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o possibilities.exe
+
 style: style.cpp
 	$(CXX) style.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o style.exe
 

@@ -31,14 +31,14 @@
 class ProgressBar
 {
    public:
-
+   
    ProgressBar(std::string style = "DEFAULT", std::string customText = "", std::string color = "");
    ProgressBar(std::string customLeftBorder, const char customCompleteSymbol, 
                const char customNextCompleteSymbol, const char customNotCompleteSymbol,
                std::string customRightBorder, std::string color, std::string customText = "");
    
    void SetColor(std::string color);
-   void SetStyle(std::string style, std::string color = "");
+   void SetStyle(std::string style, std::string color);
    void SetCustomStyle(std::string customLeftBorder, const char customCompleteSymbol, 
                        const char customNextCompleteSymbol, const char customNotCompleteSymbol,
                        std::string customRightBorder, std::string color);
