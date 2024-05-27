@@ -43,7 +43,8 @@ After linking to use the progress bar in your code create an instance of Progres
                              std::string customText = "", 
                              std::string color =      ""
                              )
-
+```
+```c++
     ProgressBar::ProgressBar(std::string customLeftBorder, 
                              const char  customCompleteSymbol, 
                              const char  customNextCompleteSymbol, 
