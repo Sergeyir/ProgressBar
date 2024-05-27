@@ -1,10 +1,10 @@
 ### Table of Contents  
-**[Overview](#overview)**
-**[Installing](#installing)**
-**[Usage](#usage)**
-**[Changing progress bar parameters](#changing-progress-bar-parameters)**
-**[Predefined styles](#predefined-styles)**
-**[Predefined colors](#predefined-colors)**
+**[Overview](#overview)**<br>
+**[Installing](#installing)**<br>
+**[Usage](#usage)**<br>
+**[Changing progress bar parameters](#changing-progress-bar-parameters)**<br>
+**[Predefined styles](#predefined-styles)**<br>
+**[Predefined colors](#predefined-colors)**<br>
 
 # Overview
 
