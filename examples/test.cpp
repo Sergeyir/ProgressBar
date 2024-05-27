@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-#include "../include/ProgressBar.hpp"
+#include "PBar.hpp"
 
 void do_something() {usleep(1e3);}
 
@@ -34,7 +34,7 @@ int main()
 	}
 
 	//Changing color
-	ProgressBar pbar4("FANCY", "Change color", OutputColor::green);
+	ProgressBar pbar4("FANCY", "Change color", PBarColor::GREEN);
 	for (int i = 0; i < 1e3; i++)
 	{
 		pbar4.Print(static_cast<double>(i)/(1e3 - 1.));
@@ -42,7 +42,7 @@ int main()
 	}
 
 	//Creating progress bar with it's own style
-	ProgressBar pbar5("(", '+', '>', '-', ")", OutputColor::bold_magenta, "Custom");
+	ProgressBar pbar5("(", '+', '>', '-', ")", PBarColor::BOLD_MAGENTA, "Custom");
 	for (int i = 0; i < 1e3; i++)
 	{
 		pbar5.Print(static_cast<double>(i)/(1e3 - 1.));

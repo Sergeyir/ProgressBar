@@ -3,7 +3,7 @@
 #include <vector>
 #include <thread>
 
-#include "../include/ProgressBar.hpp"
+#include "../include/PBar.hpp"
 
 void do_something()
 {

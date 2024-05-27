@@ -1,7 +1,7 @@
-#ifndef PROGRESS_BAR_CPP
-#define PROGRESS_BAR_CPP
+#ifndef PBAR_CPP
+#define PBAR_CPP
 
-#include "../include/ProgressBar.hpp"
+#include "../include/PBar.hpp"
 
 ProgressBar::ProgressBar(std::string style, std::string left_text,
                          std::string color, const int default_width)
@@ -107,17 +107,17 @@ void ProgressBar::Print(const double progress)
    int pos = static_cast<int>(width * bar_progress);
 
    std::stringstream to_print;
-   to_print << "\r " << OutputColor::bold_white << text << " " << bar_color << left_border;
+   to_print << "\r " << PBarColor::BOLD_WHITE << text << " " << bar_color << left_border;
 
    for (int count = 0; count < width; count++)
    {
-      if (count == pos) to_print << next_complete + OutputColor::reset;
+      if (count == pos) to_print << next_complete + PBarColor::RESET;
       else if (count < pos) to_print << complete;
       else to_print << not_complete;
    }
    to_print << bar_color + right_border;
 
-   to_print << " " + OutputColor::bold_white + "[" + progress_perc + "%]" + OutputColor::reset + " ";
+   to_print << " " + PBarColor::BOLD_WHITE + "[" + progress_perc + "%]" + PBarColor::RESET + " ";
 
    std::cout << to_print.str() << " \r";
    std::cout.flush();
@@ -146,18 +146,18 @@ void ProgressBar::RePrint()
    int pos = static_cast<int>(width * bar_progress);
 
    std::stringstream to_print;
-   to_print << "\r " << OutputColor::bold_white << text << " " << bar_color << left_border;
+   to_print << "\r " << PBarColor::BOLD_WHITE << text << " " << bar_color << left_border;
 
    for (int count = 0; count < width; count++)
    {
-      if (count == pos) to_print << next_complete + OutputColor::reset;
+      if (count == pos) to_print << next_complete + PBarColor::RESET;
       else if (count < pos) to_print << complete;
       else to_print << not_complete;
    }
    to_print << bar_color << right_border;
 
-   to_print << " " << OutputColor::bold_white << 
-      "[" << progress_perc << "%]" << OutputColor::reset << " ";
+   to_print << " " << PBarColor::BOLD_WHITE << 
+      "[" << progress_perc << "%]" << PBarColor::RESET << " ";
 
    std::cout << to_print.str() << " \r";
    std::cout.flush();
@@ -194,7 +194,7 @@ std::string ProgressBar::CheckStyle(std::string style)
 {
    if (PBStyle::map.find(style) == PBStyle::map.end()) 
    {
-      std::cout << OutputColor::bold_magenta << "Warning: " << OutputColor::reset << 
+      std::cout << PBarColor::BOLD_MAGENTA << "Warning: " << PBarColor::RESET << 
          "Style \"" << style << "\" was not found; changing to \"DEFAULT\"" << std::endl;
       style = "DEFAULT";
 

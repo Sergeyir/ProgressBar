@@ -10,7 +10,6 @@
 #include <iomanip>
 #include <array>
 
-#include "OutputColor.hpp"
 #include "PBarStyle.hpp"
 
 class ProgressBar

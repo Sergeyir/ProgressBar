@@ -1,15 +1,15 @@
 -include Makefile.inc
-test: test.cc
-	$(CXX) test.cc $(CXX_FLAGS) $(PROGRESS_BAR_LIB) -o test.exe
+test: test.cpp
+	$(CXX) test.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o test.exe
 
-style: style.cc
-	$(CXX) style.cc $(CXX_FLAGS) $(PROGRESS_BAR_LIB) -o style.exe
+style: style.cpp
+	$(CXX) style.cpp $(CXX_FLAGS) $(PBAR_LIB) -o style.exe
 
-mt: mt.cc
-	$(CXX) mt.cc $(CXX_FLAGS) $(PROGRESS_BAR_LIB) -o mt.exe
+mt: mt.cpp
+	$(CXX) mt.cpp $(CXX_FLAGS) $(PBAR_LIB) -o mt.exe
 
-speed: speed.cc
-	$(CXX) speed.cc $(CXX_FLAGS) $(PROGRESS_BAR_LIB) -o speed.exe
+speed: speed.cpp
+	$(CXX) speed.cpp $(CXX_FLAGS) $(PBAR_LIB) -o speed.exe
 
 clean: 
 	rm *.exe
