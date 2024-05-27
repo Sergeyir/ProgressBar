@@ -1,11 +1,10 @@
-## Table of Contents  
-[Overview](#Overview)  
-[Installing](#Installing)  
-[Usage](#Usage)  
-[Changing progress bar parameters](#Changing progress bar parameters)  
-[Predefined styles](#Predefined styles)  
-[Predefined colors](#Predefined colors)  
-<a name="headers"/>
+### Table of Contents  
+**[Overview](#Overview)**<br>
+**[Installing](#Installing)**<br>
+**[Usage](#Usage)**<br>
+**[Changing progress bar parameters](#Changing progress bar parameters)**<br>
+**[Predefined styles](#Predefined styles)**<br>
+**[Predefined colors](#Predefined colors)**<br>
 
 # Overview
 
