@@ -10,7 +10,7 @@
 
 This is a simple fast customizable graphic terminal display that shows you the progress of your process in a form of an ascii horizontal bar.
 
-![](https://github.com/Sergeyir/ProgressBar/preview/pbar_demo.gif)
+![](https://github.com/Sergeyir/ProgressBar/blob/main/preview/pbar_demo.gif)
 
 # Installing
 
