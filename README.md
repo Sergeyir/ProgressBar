@@ -39,20 +39,20 @@ You can link the compiled libraries and include headers as shown in Makefile in 
 After linking to use the progress bar in your code create an instance of ProgressBar object with one of the following constructors:
 
 ```c++
-    ProgressBar::ProgressBar(std::string style =      "DEFAULT", 
-                             std::string customText = "", 
-                             std::string color =      ""
-                             )
+ProgressBar::ProgressBar(std::string style =      "DEFAULT", 
+                         std::string customText = "", 
+                         std::string color =      ""
+                         )
 ```
 ```c++
-    ProgressBar::ProgressBar(std::string customLeftBorder, 
-                             const char  customCompleteSymbol, 
-                             const char  customNextCompleteSymbol, 
-                             const char  customNotCompleteSymbol,
-                             std::string customRightBorder, 
-                             std::string color, 
-                             std::string customText = ""
-                             )
+ProgressBar::ProgressBar(std::string customLeftBorder, 
+                         const char  customCompleteSymbol, 
+                         const char  customNextCompleteSymbol, 
+                         const char  customNotCompleteSymbol,
+                         std::string customRightBorder, 
+                         std::string color, 
+                         std::string customText = ""
+                         )
 ```
 
 The first constructor lets you choose one of predefined styles, add text to the left of your progress bar, choose the color. And the second lets you choose the characters that will construct the body of progress bar. For more details you can see by making and obserbing examples/possibilities.cpp.
@@ -72,35 +72,35 @@ You can change the parameters of already created ProgressBar object using the Pr
 - Changes the color of the progress bar body
 
 ```c++
-   void SetColor(std::string color)
+void SetColor(std::string color)
 ```
 
 - Changes the style of the progress bar
 
 ```c++
-    void SetStyle(std::string style, 
-                  std::string color = ""
-                  )
+void SetStyle(std::string style, 
+              std::string color = ""
+              )
 ```
    
 - Changes the style of the ProgressBar object to a custom style
 ```c++
-   void ProgressBar::SetCustomStyle(std::string customLeftBorder, 
-                                    const char  customCompleteSymbol, 
-                                    const char  customNextCompleteSymbol, 
-                                    const char  customNotCompleteSymbol,
-                                    std::string customRightBorder, 
-                                    std::string color)
+void ProgressBar::SetCustomStyle(std::string customLeftBorder, 
+                                 const char  customCompleteSymbol, 
+                                 const char  customNextCompleteSymbol, 
+                                 const char  customNotCompleteSymbol,
+                                 std::string customRightBorder, 
+                                 std::string color)
 ```
 
 - Sets the width of the bar (by default the width equals the number of columns of the terminal)
 ```c++
-   void ProgressBar::SetWidth(const int customWidth)
+void ProgressBar::SetWidth(const int customWidth)
 ```
 
 - Add the text to the left of the progress bar body
 ```c++
-   void ProgressBar::SetText(std::string customText)
+void ProgressBar::SetText(std::string customText)
 ```
 
 # Predefined styles
