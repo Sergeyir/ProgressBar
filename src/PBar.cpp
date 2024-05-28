@@ -179,6 +179,7 @@ void ProgressBar::RePrint()
 void ProgressBar::Clear()
 {
    for (short i = 0; i < GetTerminalWidth(); i++) std::cout << " ";
+   std::cout << "\r";
 }
 
 void ProgressBar::Fill() {Print(1.1);}

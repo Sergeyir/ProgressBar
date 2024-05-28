@@ -5,6 +5,9 @@ test: test.cpp
 possibilities: possibilities.cpp
 	$(CXX) possibilities.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o possibilities.exe
 
+handle_output: handle_output.cpp
+	$(CXX) handle_output.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o handle_output.exe
+
 style: style.cpp
 	$(CXX) style.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o style.exe
 

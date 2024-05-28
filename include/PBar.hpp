@@ -51,7 +51,19 @@ class ProgressBar
    void Reset();
    void SetBarStep(const double step);
    void SetPrecision(const short precision);
-
+   
+   template <typename... T>
+   void HandleOutput(T... args)
+   {
+      if (printedProgress < 1.) Clear();
+      
+      ((std::cout << args << " "), ...);
+      std::cout << std::endl;
+      
+      if (printedProgress > 1.) return;
+      RePrint();
+   }
+   
    virtual ~ProgressBar();
    
    protected:
