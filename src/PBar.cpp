@@ -48,6 +48,7 @@ void ProgressBar::SetColor(std::string color)
 
 void ProgressBar::SetStyle(std::string style, std::string color)
 {
+   std::array<std::string, 6> stylePar;
    if (PBStyle::map.find(style) == PBStyle::map.end() && 
       PBStyle::secretMap.find(style) == PBStyle::secretMap.end()) 
    {
@@ -65,37 +66,27 @@ void ProgressBar::SetStyle(std::string style, std::string color)
       std::cout << "Or create your custom style with the constuctor for the cutstom style \n \
       If you don't need the style you can leave the object declaration constructor empty; \n \
       the style will be automaticaly set to default without printing the warning" << std::endl;
-      
-      return;
+
+      stylePar = PBStyle::map["DEFAULT"];
    }
-   if (PBStyle::map.find(style) != PBStyle::map.end())
+   else if (PBStyle::map.find(style) != PBStyle::map.end())
    {
-      std::array<std::string, 6> stylePar = PBStyle::map[style.c_str()];
-
-      leftBorder = stylePar[0];
-      rightBorder = stylePar[4];
-      
-      completeSymbol = stylePar[1];
-      nextCompleteSymbol = stylePar[2];
-      notCompleteSymbol = stylePar[3];
-
-      if (color == "") SetColor(stylePar[5]);
-      else SetColor(color);
+      stylePar = PBStyle::map[style.c_str()];
    }
    else 
    {
-      std::array<std::string, 6> stylePar = PBStyle::secretMap[style.c_str()];
-
-      leftBorder = stylePar[0];
-      rightBorder = stylePar[4];
-      
-      completeSymbol = stylePar[1];
-      nextCompleteSymbol = stylePar[2];
-      notCompleteSymbol = stylePar[3];
-
-      if (color == "") barColor = stylePar[5];
-      else barColor = color;
+      stylePar = PBStyle::secretMap[style.c_str()];
    }
+
+   leftBorder = stylePar[0];
+   rightBorder = stylePar[4];
+   
+   completeSymbol = stylePar[1];
+   nextCompleteSymbol = stylePar[2];
+   notCompleteSymbol = stylePar[3];
+
+   if (color == "") SetColor(stylePar[5]);
+   else SetColor(color);
 }
 
 void ProgressBar::SetCustomStyle(std::string customLeftBorder, const char customCompleteSymbol, 
