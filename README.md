@@ -20,7 +20,7 @@ Run in your working directory to download
 git clone https://github.com/Sergeyir/ProgressBar
 ```
 
-Run in the downloaded directory to compile all code
+Run in the downloaded directory to compile the code for progress bar
 
 ```sh 
 make install 
