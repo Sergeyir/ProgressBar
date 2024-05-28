@@ -22,9 +22,7 @@
 ProgressBar::ProgressBar(std::string style, std::string customText, std::string color)
 {
    fullWidth = GetTerminalWidth();
-   
-   for (char &c : style) c = toupper(c);
-   
+    
    SetStyle(style, color);
    SetText(customText);
 }
@@ -48,6 +46,8 @@ void ProgressBar::SetColor(std::string color)
 
 void ProgressBar::SetStyle(std::string style, std::string color)
 {
+   for (char &c : style) c = toupper(c);
+   
    std::array<std::string, 6> stylePar;
    if (PBStyle::map.find(style) == PBStyle::map.end() && 
       PBStyle::secretMap.find(style) == PBStyle::secretMap.end()) 
