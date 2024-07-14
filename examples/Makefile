@@ -1,21 +1,13 @@
+SHELL=/usr/bin/env bash
+
 -include Makefile.inc
-test: test.cpp
-	$(CXX) test.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o test.exe
 
-possibilities: possibilities.cpp
-	$(CXX) possibilities.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o possibilities.exe
+test_macros = test possibilities handle_output style mt speed
 
-handle_output: handle_output.cpp
-	$(CXX) handle_output.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o handle_output.exe
+all: test possibilities handle_output style mt speed
 
-style: style.cpp
-	$(CXX) style.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o style.exe
-
-mt: mt.cpp
-	$(CXX) mt.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o mt.exe
-
-speed: speed.cpp
-	$(CXX) speed.cpp $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o speed.exe
+$(test_macros): %: %.cpp
+	$(CXX) $^ $(CXX_FLAGS) $(PBAR_INCLUDE) $(PBAR_LIB) -o $@.exe
 
 clean: 
 	rm *.exe
