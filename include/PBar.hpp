@@ -93,4 +93,4 @@ class ProgressBar
    std::string DtoStr (const double val, const short precision = 2);
 };
 
-#endif
+#endif /*PROGRESS_BAR_HPP*/

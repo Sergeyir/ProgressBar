@@ -46,4 +46,4 @@ namespace PBStyle
    };
 } 
 
-#endif
+#endif /*PBARSTYLE_HPP*/

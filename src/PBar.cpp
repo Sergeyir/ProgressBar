@@ -211,4 +211,4 @@ std::string ProgressBar::DtoStr(const double val, const short precision)
 
 ProgressBar::~ProgressBar() {};
 
-#endif
+#endif /*PBAR_CPP*/

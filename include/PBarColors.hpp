@@ -40,4 +40,4 @@ namespace PBarColor
    const std::string BOLD_WHITE = "\033[1m\033[37m";
 }
 
-#endif
+#endif /*PBAR_COLOR_HPP*/
