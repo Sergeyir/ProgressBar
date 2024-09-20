@@ -32,18 +32,20 @@ class ProgressBar
 {
    public:
    
-   ProgressBar(std::string style = "DEFAULT", std::string customText = "", std::string color = "");
-   ProgressBar(std::string customLeftBorder, const char customCompleteSymbol, 
+   ProgressBar(std::string style = "DEFAULT", const std::string& customText = "", 
+               const std::string& color = "");
+   ProgressBar(const std::string& customLeftBorder, const char customCompleteSymbol, 
                const char customNextCompleteSymbol, const char customNotCompleteSymbol,
-               std::string customRightBorder, std::string color, std::string customText = "");
+               const std::string& customRightBorder, const std::string& color, 
+               const std::string& customText = "");
    
-   void SetColor(std::string color);
-   void SetStyle(std::string style, std::string color);
-   void SetCustomStyle(std::string customLeftBorder, const char customCompleteSymbol, 
+   void SetColor(const std::string& color);
+   void SetStyle(std::string style, const std::string& color);
+   void SetCustomStyle(const std::string& customLeftBorder, const char customCompleteSymbol, 
                        const char customNextCompleteSymbol, const char customNotCompleteSymbol,
-                       std::string customRightBorder, std::string color);
+                       const std::string& customRightBorder, const std::string& color);
    void SetWidth(const short customWidth);
-   void SetText(std::string customText);
+   void SetText(const std::string& customText);
    void Print(const double progress);
    void Clear();
    void RePrint();

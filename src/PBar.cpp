@@ -19,7 +19,8 @@
 
 #include "../include/PBar.hpp"
 
-ProgressBar::ProgressBar(std::string style, std::string customText, std::string color)
+ProgressBar::ProgressBar(std::string style, const std::string& customText, 
+                         const std::string& color)
 {
    fullWidth = GetTerminalWidth();
     
@@ -27,9 +28,10 @@ ProgressBar::ProgressBar(std::string style, std::string customText, std::string 
    SetText(customText);
 }
 
-ProgressBar::ProgressBar(std::string customLeftBorder, const char customCompleteSymbol, 
+ProgressBar::ProgressBar(const std::string& customLeftBorder, const char customCompleteSymbol, 
                          const char customNextComplete, const char customNotCompleteSymbol,
-                         std::string customRightBorder, std::string color, std::string customText)
+                         const std::string& customRightBorder, const std::string& color, 
+                         const std::string& customText)
 {
    fullWidth = GetTerminalWidth();
    
@@ -39,12 +41,12 @@ ProgressBar::ProgressBar(std::string customLeftBorder, const char customComplete
    SetText(customText);
 }
 
-void ProgressBar::SetColor(std::string color)
+void ProgressBar::SetColor(const std::string& color)
 {
    barColor = color;
 }
 
-void ProgressBar::SetStyle(std::string style, std::string color)
+void ProgressBar::SetStyle(std::string style, const std::string& color)
 {
    for (char &c : style) c = toupper(c);
    
@@ -89,9 +91,10 @@ void ProgressBar::SetStyle(std::string style, std::string color)
    else SetColor(color);
 }
 
-void ProgressBar::SetCustomStyle(std::string customLeftBorder, const char customCompleteSymbol, 
+void ProgressBar::SetCustomStyle(const std::string& customLeftBorder, 
+                                 const char customCompleteSymbol, 
                                  const char customNextComplete, const char customNotCompleteSymbol,
-                                 std::string customRightBorder, std::string color)
+                                 const std::string& customRightBorder, const std::string& color)
 {
    leftBorder = customLeftBorder;
    rightBorder = customRightBorder;
@@ -111,7 +114,7 @@ void ProgressBar::SetWidth(const short customWidth)
    fullWidth = customWidth;
 }
 
-void ProgressBar::SetText(std::string customText)
+void ProgressBar::SetText(const std::string& customText)
 {
    barText = customText;
    SetWidth(fullWidth);
