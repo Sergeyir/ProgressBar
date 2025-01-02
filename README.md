@@ -23,13 +23,13 @@ git clone https://github.com/Sergeyir/ProgressBar
 Run in the downloaded directory to compile the code for progress bar
 
 ```sh 
-make install 
+make
 ```
 
-Compilation should take less than a second. You can check the compilation result by heading to the example directory by making the test.cpp and then running the executable
+Compilation should take less than a second. You can check the compilation result by heading to the example directory by making examples and then running the simplest test executable
 
 ```sh
-make test && ./test.exe
+make && ./test
 ```
 
 # Usage
