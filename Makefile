@@ -29,7 +29,7 @@ endif
 
 all: PBar
 
-PBar: lib/PBar.o lib/libPBar.so
+PBar: lib/libPBar.so
 
 lib: 
 	mkdir -p $@
