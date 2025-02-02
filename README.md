@@ -42,7 +42,7 @@ xdg-open html/index.html
 
 # Usage
 
-You can link the compiled librariy libPBar.so (see Makefile and Makefile.am for reference in the examples directory). Also see other examples in examples directory:
+You can link the compiled librariy libPBar.so (see Makefile and Makefile.am for reference in the examples directory). Also see [examples](https://sergeyir.github.io/ProgressBar/examples.html) in examples directory:
 - style.cpp - execute, run and try different ProgressBar with different styles.
 - possibilities.cpp - shows different ways to use ProgressBar.
 - hanlde_output.cpp - shows how to handle output while ProgressBar is in progress.
