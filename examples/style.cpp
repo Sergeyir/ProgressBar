@@ -1,3 +1,11 @@
+/** 
+ *  @file style.cpp 
+ *  @brief When executed this example allows to test different styles of ProgressBar 
+ *
+ *  This file is an example in a project ProgressBar (https://github.com/Sergeyir/ProgressBar).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
+ **/
 #include <unistd.h>
 
 #include "PBar.hpp"
@@ -8,9 +16,12 @@ int main(int argc, char *argv[])
 {
 	if (argc < 2) 
 	{
-		std::cout << PBarColor::BOLD_RED << "Error: " << 
-			PBarColor::RESET << "Number of passed arguments is " << argc - 1 << 
-			" while at least 1 was expected" << std::endl;
+		std::cout << "\033[1m\033[31mError:\033[0m " << 
+			          "Number of passed arguments is " << argc - 1 << 
+			          " while at least 1 was expected" << std::endl;
+      std::cout << "\033[32mUsage:\033[0m " << 
+                   "Pass one or multiple string containing style names as an arguments" << std::endl;
+      std::cout << "Example: ./style FANCY BLOCK" << std::endl;
 		exit(1);
 	}
 

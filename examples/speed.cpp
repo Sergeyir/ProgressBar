@@ -1,5 +1,11 @@
-//this macros tests the speed of progress bar printing
-
+/** 
+ *  @file speed.cpp 
+ *  @brief When executed this examples shows how much time it takes for calling ProgressBar::Print(progress) 1 billion times
+ *
+ *  This file is an example in a project ProgressBar (https://github.com/Sergeyir/ProgressBar).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
+ **/
 #include <unistd.h>
 #include <chrono>
 

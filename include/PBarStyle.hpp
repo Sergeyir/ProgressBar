@@ -1,30 +1,25 @@
-// $HEADER$
-//------------------------------------------------------------------------------------------------
-//                                    PBar style structure
-//------------------------------------------------------------------------------------------------
-// PBar: progress bar
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-//
-/**
- * Set of styles for a PBar
+/** 
+ *  @file   PBarStyle.hpp 
+ *  @brief Contains map of styles for ProgressBar class
+ *
+ *  This file is a part of a project https://github.com/Sergeyir/ProgressBar
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
-//------------------------------------------------------------------------------------------------
-
-#ifndef PBARSTYLE_HPP
-#define PBARSTYLE_HPP
+#ifndef PBAR_STYLE_HPP
+#define PBAR_STYLE_HPP
 
 #include <string>
 #include <map>
 
-#include "PBarColors.hpp"
+#include "PBarColor.hpp"
 
-namespace PBStyle
+/// @namespace PBarStyle PBarStyle namespace containing styles for ProgressBar class
+namespace PBarStyle
 {
-   //some symbols are thicker than the width that cpp calculates: 
-   //for those \r and empty spaces are used
+   // some symbols are thicker than the width that strlen() returns: 
+   // for those \r and empty spaces are used to artificialy inflate the length of the string
+   /// map of styles for ProgressBar
    static std::map<std::string, std::array<std::string, 6>> map = 
    {
       {"DEFAULT", {"[", "#", "", ".", "]", PBarColor::BOLD_CYAN}},
@@ -38,6 +33,7 @@ namespace PBStyle
       {"BLOCK2", {"◢█", "▓", "▒", "▒", "█◤", PBarColor::BOLD_YELLOW}}
    };
 
+   // this is a secret, you're not supposed to see it
    static std::map<std::string, std::array<std::string, 6>> secretMap = 
    {
       {"SUS", {"SUS ", "ඞ", "ච", "○", " SUS", PBarColor::BOLD_RED}},
@@ -46,4 +42,4 @@ namespace PBStyle
    };
 } 
 
-#endif /*PBARSTYLE_HPP*/
+#endif /* PBAR_STYLE_HPP */

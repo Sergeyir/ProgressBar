@@ -1,3 +1,11 @@
+/** 
+ *  @file stest.cpp 
+ *  @brief The simplest usage of ProgressBar
+ *
+ *  This file is an example in a project ProgressBar (https://github.com/Sergeyir/ProgressBar).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
+ **/
 #include <unistd.h>
 
 #include "PBar.hpp"

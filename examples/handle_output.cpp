@@ -1,3 +1,11 @@
+/** 
+ *  @file handle_output.cpp 
+ *  @brief Example on usage of ProgressBar showing how to handle output in terminal while ProgressBar is in progress
+ *
+ *  This file is an example in a project ProgressBar (https://github.com/Sergeyir/ProgressBar).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
+ **/
 #include <unistd.h>
 
 #include "PBar.hpp"

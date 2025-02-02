@@ -1,19 +1,11 @@
-// $SOURCE$
-//------------------------------------------------------------------------------------------------
-//                              ProgressBar class implementation
-//------------------------------------------------------------------------------------------------
-// PBar: progress bar
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic fast customizable graphic terminal display of a process progress in a form of an ascii bar
+/** 
+ *  @file PBar.cpp 
+ *  @brief Contains realisation of class ProgressBar
+ *
+ *  This file is a part of a project ProgressBar (https://github.com/Sergeyir/ProgressBar).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
-//------------------------------------------------------------------------------------------------
-
 #ifndef PBAR_CPP
 #define PBAR_CPP
 
@@ -51,8 +43,8 @@ void ProgressBar::SetStyle(std::string style, const std::string& color)
    for (char &c : style) c = toupper(c);
    
    std::array<std::string, 6> stylePar;
-   if (PBStyle::map.find(style) == PBStyle::map.end() && 
-      PBStyle::secretMap.find(style) == PBStyle::secretMap.end()) 
+   if (PBarStyle::map.find(style) == PBarStyle::map.end() && 
+      PBarStyle::secretMap.find(style) == PBarStyle::secretMap.end()) 
    {
       std::cout << PBarColor::BOLD_MAGENTA << "Warning: " << PBarColor::RESET << 
          "Style \"" << style << "\" was not found; changing to \"DEFAULT\"" << std::endl;
@@ -60,7 +52,7 @@ void ProgressBar::SetStyle(std::string style, const std::string& color)
 
       std::cout << "You can use one of the predefined styles: " << std::endl;
 
-      for (auto const &x : PBStyle::map)
+      for (auto const &x : PBarStyle::map)
       {
          std::cout << " " << x.first << std::endl;
       }
@@ -69,15 +61,15 @@ void ProgressBar::SetStyle(std::string style, const std::string& color)
       If you don't need the style you can leave the object declaration constructor empty; \n \
       the style will be automaticaly set to default without printing the warning" << std::endl;
 
-      stylePar = PBStyle::map["DEFAULT"];
+      stylePar = PBarStyle::map["DEFAULT"];
    }
-   else if (PBStyle::map.find(style) != PBStyle::map.end())
+   else if (PBarStyle::map.find(style) != PBarStyle::map.end())
    {
-      stylePar = PBStyle::map[style.c_str()];
+      stylePar = PBarStyle::map[style.c_str()];
    }
    else 
    {
-      stylePar = PBStyle::secretMap[style.c_str()];
+      stylePar = PBarStyle::secretMap[style.c_str()];
    }
 
    leftBorder = stylePar[0];
@@ -214,4 +206,4 @@ std::string ProgressBar::DtoStr(const double val, const short precision)
 
 ProgressBar::~ProgressBar() {};
 
-#endif /*PBAR_CPP*/
+#endif /* PBAR_CPP */

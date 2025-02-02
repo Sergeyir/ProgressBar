@@ -18,7 +18,7 @@ T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
      ECHO="COUNTTHIS" | grep -c "COUNTTHIS")
 N := x
 C = $(words $N)$(eval N := x $N)
-ECHO = python3 $(I)/makefile_progress.py --stepno=$C --nsteps=$T
+ECHO = python3 $(I)/../makefile_progress.py --stepno=$C --nsteps=$T
 endif
 
 # Rules without physical targets (secondary expansion for specific rules).
@@ -27,7 +27,7 @@ endif
 
 .SILENT:
 
-all: test style possibilities speed style handle_output
+all: test style possibilities speed handle_output mt
 
 %: %.cpp
 	@$(ECHO) Building CXX executable $@ 
