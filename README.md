@@ -4,6 +4,10 @@ This is a simple fast customizable graphic terminal display that shows you the p
 
 ![](https://github.com/Sergeyir/ProgressBar/blob/main/preview/pbar_demo.gif)
 
+# Requirements
+
+- GNU GCC++11 or newer
+
 # Installing
 
 Run in your working directory to download
