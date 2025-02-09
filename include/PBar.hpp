@@ -33,7 +33,7 @@
 class ProgressBar
 {
    public:
-   
+
    /*! @brief Constructor that creates ProgressBar instance with predefined style
     * @param[in] style predefined style of the bar. Currently there are 9 predefined styles ("DEFAULT", "IMPROVED", "FANCY", "FANCY1", "FANCY2", "WAVE", "BLOCK", "BLOCK1", "BLOCK2" (for more info see examples) and can be passed as a string in upper and/or lower case )
     * @param[in] customText text to be printed on the left of the bar
@@ -115,7 +115,7 @@ class ProgressBar
     * @param[in] precision floating point precision of the progress indicator (default is 0)
     */
    void SetPrecision(const short precision);
-   
+
    /*! @brief Rerouts the output in the terminal so the ProgressBar will not be interrupted.
     *
     * @param[in] args parameter pack which will be printed.
@@ -126,17 +126,17 @@ class ProgressBar
    void HandleOutput(T... args)
    {
       if (printedProgress < 1.) Clear();
-      
+
       ((std::cout << args << " "), ...);
       std::cout << std::endl;
-      
+
       if (printedProgress > 1.) return;
       RePrint();
    }
-   
+
    /// @brief Default destructor
    virtual ~ProgressBar();
-   
+
    protected:
 
    /// @brief Get the length of the string containing UTF8 symbols
@@ -145,10 +145,10 @@ class ProgressBar
    short GetTerminalWidth();
    /// @brief Convert double to std::string with a give precision
    std::string DtoStr (const double val, const short precision = 2);
-   
+
    /// Number of empty spaces in a progress bar line (2 on very the edges, 1 between text and a bar, and 1 between bar and progress indicator)
    const short EMPTY_SPACE_WIDTH = 4; 
-      
+
    /// Text to be printed on the left of the progress bar
    std::string barText;
 
@@ -164,12 +164,12 @@ class ProgressBar
    std::string nextCompleteSymbol;
    /// Bar body symbol indicating not yet filled positions in a bar; comes after completeSymbol and before rightBorder
    std::string notCompleteSymbol;
-   
+
    /// The length of the bar
    short fullWidth;
    /// The length of the body of the bar (borders + body symbols)
    short barBodyWidth;
-   
+
    /// Bar step. 1/barStep is the overall number of times ProgressBar will be printed before it is filled
    double barStep = 0.01;
    /// Variable that tracks the progress of a last progress bar printed. Used for progress checks to decrease the number of times ProgressBar is printed

@@ -32,7 +32,6 @@ namespace PBarStyle
       {"BLOCK1", {"█", "▓", "▒", "▒", "█", PBarColor::MAGENTA}},
       {"BLOCK2", {"◢█", "▓", "▒", "▒", "█◤", PBarColor::BOLD_YELLOW}}
    };
-
    // this is a secret, you're not supposed to see it
    static std::map<std::string, std::array<std::string, 6>> secretMap = 
    {

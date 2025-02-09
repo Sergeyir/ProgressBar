@@ -15,7 +15,7 @@ ProgressBar::ProgressBar(std::string style, const std::string& customText,
                          const std::string& color)
 {
    fullWidth = GetTerminalWidth();
-    
+ 
    SetStyle(style, color);
    SetText(customText);
 }
@@ -26,10 +26,10 @@ ProgressBar::ProgressBar(const std::string& customLeftBorder, const char customC
                          const std::string& customText)
 {
    fullWidth = GetTerminalWidth();
-   
+
    SetCustomStyle(customLeftBorder, customCompleteSymbol, customNextComplete, 
       customNotCompleteSymbol, customRightBorder, color);
-   
+
    SetText(customText);
 }
 
@@ -41,7 +41,7 @@ void ProgressBar::SetColor(const std::string& color)
 void ProgressBar::SetStyle(std::string style, const std::string& color)
 {
    for (char &c : style) c = toupper(c);
-   
+
    std::array<std::string, 6> stylePar;
    if (PBarStyle::map.find(style) == PBarStyle::map.end() && 
       PBarStyle::secretMap.find(style) == PBarStyle::secretMap.end()) 
@@ -56,7 +56,7 @@ void ProgressBar::SetStyle(std::string style, const std::string& color)
       {
          std::cout << " " << x.first << std::endl;
       }
-      
+
       std::cout << "Or create your custom style with the constuctor for the cutstom style \n \
       If you don't need the style you can leave the object declaration constructor empty; \n \
       the style will be automaticaly set to default without printing the warning" << std::endl;
@@ -74,7 +74,7 @@ void ProgressBar::SetStyle(std::string style, const std::string& color)
 
    leftBorder = stylePar[0];
    rightBorder = stylePar[4];
-   
+
    completeSymbol = stylePar[1];
    nextCompleteSymbol = stylePar[2];
    notCompleteSymbol = stylePar[3];
@@ -90,7 +90,7 @@ void ProgressBar::SetCustomStyle(const std::string& customLeftBorder,
 {
    leftBorder = customLeftBorder;
    rightBorder = customRightBorder;
-   
+
    completeSymbol = customCompleteSymbol;
    nextCompleteSymbol = customNextComplete;
    notCompleteSymbol = customNotCompleteSymbol;
@@ -113,36 +113,36 @@ void ProgressBar::SetText(const std::string& customText)
 }
 
 void ProgressBar::Print(const double progress)
-{   
+{
    //checks if the progress exceeded the step from the previous one
    if (progress - barStep/2. <= printedProgress) return;
    //checks if the progress and printed progress of the bar both exceed 1
    if (progress > 1. + barStep/2. && printedProgress > 1. + barStep/2.) return;
 
    printedProgress = progress + barStep;
-   
+
    RePrint();
 }
 
 void ProgressBar::RePrint()
-{   
+{
    std::string progressPercentage;
    if (printedProgress < 1.) progressPercentage = DtoStr((printedProgress) * 100.0, barPrecision);
    else progressPercentage = DtoStr(100., barPrecision);
-   
+
    short barWidthToPrint;
-   
+
    if (barBodyWidth > GetTerminalWidth()) 
    {
       barWidthToPrint = GetTerminalWidth() - fullWidth + 
       barBodyWidth - utf8_strlen(progressPercentage) - EMPTY_SPACE_WIDTH;
    }
    else barWidthToPrint = barBodyWidth - utf8_strlen(progressPercentage) - EMPTY_SPACE_WIDTH;
-   
+
    short nextCompleteSymbolPosition = static_cast<short>(barWidthToPrint * printedProgress);
 
    std::stringstream barToPrint;
-   
+
    barToPrint << "\r " << PBarColor::BOLD_WHITE << barText << " " << barColor << leftBorder;
 
    for (short i = 0; i < barWidthToPrint; i++)
