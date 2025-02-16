@@ -1,5 +1,8 @@
+lib/
+html/
+latex/
+
 *.exe
-lib
 *.so
 *.o
 *.a

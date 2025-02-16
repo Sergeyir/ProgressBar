@@ -30,7 +30,7 @@ make && ./test
 
 # Documentation
 
-You can view the detailed documentation https://sergeyir.github.io/ProgressBar/ (see Classes / Class List / ProgressBar).
+You can view the detailed documentation https://sergeyir.github.io/ProgressBar/ (see Classes/Class List/ProgressBar).
 
 If the link is unaccesible you can generate the documentation yourself with doxygen. To do this run while in root of the repository
 
