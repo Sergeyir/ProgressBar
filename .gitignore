@@ -1,8 +1,14 @@
 lib/
 html/
 latex/
+build/
+CMakeFiles/
 
 *.exe
 *.so
 *.o
 *.a
+
+CMakeCache.txt
+./Makefile
+./Makefile.inc
