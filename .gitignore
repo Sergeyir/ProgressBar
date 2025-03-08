@@ -3,11 +3,13 @@ html/
 latex/
 build/
 CMakeFiles/
+bin/
 
 *.exe
 *.so
 *.o
 *.a
+*.cmake
 
 CMakeCache.txt
 ./Makefile
