@@ -12,5 +12,4 @@ bin/
 *.cmake
 
 CMakeCache.txt
-./Makefile
-./Makefile.inc
+Makefile
