@@ -12,18 +12,18 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_library(PBar ${CMAKE_SOURCE_DIR}/src/PBar.cpp)
+add_library(PBar ${CMAKE_CURRENT_SOURCE_DIR}/src/PBar.cpp)
 
 # compiling examples only if the current project is not a subproject
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-   add_executable(test ${CMAKE_SOURCE_DIR}/examples/test.cpp)
-   add_executable(style ${CMAKE_SOURCE_DIR}/examples/style.cpp)
-   add_executable(possibilities ${CMAKE_SOURCE_DIR}/examples/possibilities.cpp)
-   add_executable(speed ${CMAKE_SOURCE_DIR}/examples/speed.cpp)
-   add_executable(handle_output ${CMAKE_SOURCE_DIR}/examples/handle_output.cpp)
-   add_executable(mt ${CMAKE_SOURCE_DIR}/examples/mt.cpp)
+   add_executable(test ${CMAKE_CURRENT_SOURCE_DIR}/examples/test.cpp)
+   add_executable(style ${CMAKE_CURRENT_SOURCE_DIR}/examples/style.cpp)
+   add_executable(possibilities ${CMAKE_CURRENT_SOURCE_DIR}/examples/possibilities.cpp)
+   add_executable(speed ${CMAKE_CURRENT_SOURCE_DIR}/examples/speed.cpp)
+   add_executable(handle_output ${CMAKE_CURRENT_SOURCE_DIR}/examples/handle_output.cpp)
+   add_executable(mt ${CMAKE_CURRENT_SOURCE_DIR}/examples/mt.cpp)
    target_link_libraries(test PBar)
    target_link_libraries(style PBar)
    target_link_libraries(possibilities PBar)
