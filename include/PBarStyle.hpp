@@ -14,7 +14,8 @@
 
 #include "PBarColor.hpp"
 
-/// @namespace PBarStyle PBarStyle namespace containing styles for ProgressBar class
+/// @namespace PBarStyle
+/// @brief Contains styles for ProgressBar class
 namespace PBarStyle
 {
    // some symbols are thicker than the width that strlen() returns: 

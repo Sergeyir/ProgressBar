@@ -11,7 +11,8 @@
 
 #include <string>
 
-/// @namespace PBarColor PBarColor namespace containing colors for ProgressBar class
+/// @namespace PBarColor 
+/// @brief Containins colors for ProgressBar class
 namespace PBarColor
 {
    /// default color in terminal (aka white)
