@@ -6,13 +6,13 @@
  *
  *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
-#ifndef PBAR_COLOR_HPP
-#define PBAR_COLOR_HPP
+#ifndef PROGRESS_BAR_PBAR_COLOR_HPP
+#define PROGRESS_BAR_PBAR_COLOR_HPP
 
 #include <string>
 
 /// @namespace PBarColor 
-/// @brief Containins colors for ProgressBar class
+/// @brief Contains colors for ProgressBar class
 namespace PBarColor
 {
    /// default color in terminal (aka white)
@@ -52,4 +52,4 @@ namespace PBarColor
    const std::string BOLD_WHITE = "\033[1m\033[37m";
 }
 
-#endif /* PBAR_COLOR_HPP */
+#endif /* PROGRESS_BAR_PBAR_COLOR_HPP */

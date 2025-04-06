@@ -6,8 +6,8 @@
  *
  *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
-#ifndef PBAR_CPP
-#define PBAR_CPP
+#ifndef PROGRESS_BAR_PBAR_CPP
+#define PROGRESS_BAR_PBAR_CPP
 
 #include "../include/PBar.hpp"
 
@@ -61,15 +61,15 @@ void ProgressBar::SetStyle(std::string style, const std::string& color)
       If you don't need the style you can leave the object declaration constructor empty; \n \
       the style will be automaticaly set to default without printing the warning" << std::endl;
 
-      stylePar = PBarStyle::map["DEFAULT"];
+      stylePar = PBarStyle::map.at("DEFAULT");
    }
    else if (PBarStyle::map.find(style) != PBarStyle::map.end())
    {
-      stylePar = PBarStyle::map[style.c_str()];
+      stylePar = PBarStyle::map.at(style);
    }
    else 
    {
-      stylePar = PBarStyle::secretMap[style.c_str()];
+      stylePar = PBarStyle::secretMap.at(style);
    }
 
    leftBorder = stylePar[0];
@@ -206,4 +206,4 @@ std::string ProgressBar::DtoStr(const double val, const short precision)
 
 ProgressBar::~ProgressBar() {};
 
-#endif /* PBAR_CPP */
+#endif /* PROGRESS_BAR_PBAR_CPP */

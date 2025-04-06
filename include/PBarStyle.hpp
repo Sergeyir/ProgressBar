@@ -6,11 +6,11 @@
  *
  *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
-#ifndef PBAR_STYLE_HPP
-#define PBAR_STYLE_HPP
+#ifndef PROGRESS_BAR_PBAR_STYLE_HPP
+#define PROGRESS_BAR_PBAR_STYLE_HPP
 
 #include <string>
-#include <map>
+#include <unordered_map>
 
 #include "PBarColor.hpp"
 
@@ -18,10 +18,12 @@
 /// @brief Contains styles for ProgressBar class
 namespace PBarStyle
 {
+   /// length of ProgressBar styles in literals
+   constexpr unsigned short STYLE_LENGTH = 6;
    // some symbols are thicker than the width that strlen() returns: 
    // for those \r and empty spaces are used to artificialy inflate the length of the string
    /// map of styles for ProgressBar
-   static std::map<std::string, std::array<std::string, 6>> map = 
+   static const std::unordered_map<std::string, std::array<std::string, STYLE_LENGTH>> map 
    {
       {"DEFAULT", {"[", "#", "", ".", "]", PBarColor::BOLD_CYAN}},
       {"IMPROVED", {"⁅", "⁜", "⊳", "~", "⁆", PBarColor::BOLD_CYAN}},
@@ -34,7 +36,7 @@ namespace PBarStyle
       {"BLOCK2", {"◢█", "▓", "▒", "▒", "█◤", PBarColor::BOLD_YELLOW}}
    };
    // this is a secret, you're not supposed to see it
-   static std::map<std::string, std::array<std::string, 6>> secretMap = 
+   static const std::unordered_map<std::string, std::array<std::string, STYLE_LENGTH>> secretMap 
    {
       {"SUS", {"SUS ", "ඞ", "ච", "○", " SUS", PBarColor::BOLD_RED}},
       {"COMMUNISM", {"☭", "✭", "☆", " ", "☭", PBarColor::BOLD_RED}},
@@ -42,4 +44,4 @@ namespace PBarStyle
    };
 } 
 
-#endif /* PBAR_STYLE_HPP */
+#endif /* PROGRESS_BAR_PBAR_STYLE_HPP */
