@@ -16,44 +16,57 @@ int main()
 {
 	//Default constructor
 	//Default style is used
-	std::cout << "Default constuctor" << std::endl;
-	ProgressBar pbar1;
+	ProgressBar pBar1;
 	for (int i = 0; i < 1e3; i++)
 	{
-		pbar1.Print(static_cast<double>(i)/(1e3 - 1.));
+		pBar1.Print(static_cast<double>(i)/(1e3 - 1.));
 		DoSomething();
 	}
+
+   pBar1.Finish();
+   std::cout << " Progress bar with default constructor finished" << std::endl;
 	
 	//Using predefined style
-	std::cout << "Use predefined style" << std::endl;
-	ProgressBar pbar2("FANCY");
+	ProgressBar pBar2("FANCY");
 	for (int i = 0; i < 1e3; i++)
 	{
-		pbar2.Print(static_cast<double>(i)/(1e3 - 1.));
+		pBar2.Print(static_cast<double>(i)/(1e3 - 1.));
 		DoSomething();
 	}
+
+   pBar2.Finish();
+   std::cout << " Progress bar with constructor that specified style finished" << std::endl;
 
 	//Adding text
-	ProgressBar pbar3("FANCY", "Add text");
+	ProgressBar pBar3("FANCY", "Add text");
 	for (int i = 0; i < 1e3; i++)
 	{
-		pbar3.Print(static_cast<double>(i)/(1e3 - 1.));
+		pBar3.Print(static_cast<double>(i)/(1e3 - 1.));
 		DoSomething();
 	}
+
+   pBar3.Finish();
+   std::cout << " Progress bar with constructor that specified style and text finished" << std::endl;
 
 	//Changing color
-	ProgressBar pbar4("FANCY", "Change color", PBarColor::GREEN);
+	ProgressBar pBar4("FANCY", "Change color", PBarColor::GREEN);
 	for (int i = 0; i < 1e3; i++)
 	{
-		pbar4.Print(static_cast<double>(i)/(1e3 - 1.));
+		pBar4.Print(static_cast<double>(i)/(1e3 - 1.));
 		DoSomething();
 	}
 
+   pBar4.Finish();
+   std::cout << " Progress bar with constructor that specified style, text, and color finished" << std::endl;
+
 	//Creating progress bar with it's own style
-	ProgressBar pbar5("(", '+', '>', '-', ")", PBarColor::BOLD_MAGENTA, "Custom");
+	ProgressBar pBar5("(", '+', '>', '-', ")", PBarColor::BOLD_MAGENTA, "Custom");
 	for (int i = 0; i < 1e3; i++)
 	{
-		pbar5.Print(static_cast<double>(i)/(1e3 - 1.));
+		pBar5.Print(static_cast<double>(i)/(1e3 - 1.));
 		DoSomething();
 	}
+
+   pBar5.Finish();
+   std::cout << " Progress bar with constructor for custom bar finished" << std::endl;
 }

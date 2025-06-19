@@ -124,8 +124,15 @@ void ProgressBar::Print(const double progress)
    RePrint();
 }
 
+void ProgressBar::Finish() 
+{
+   Clear();
+}
+
 void ProgressBar::RePrint()
 {
+   if (printedProgress + barStep/2. >= 1) Finish();
+
    std::string progressPercentage;
    if (printedProgress < 1.) progressPercentage = DtoStr((printedProgress) * 100.0, barPrecision);
    else progressPercentage = DtoStr(100., barPrecision);
@@ -158,8 +165,6 @@ void ProgressBar::RePrint()
 
    std::cout << barToPrint.str() << "\r";
    std::cout.flush();
-
-   if (printedProgress + barStep/2. >= 1) std::cout << std::endl;
 }
 
 void ProgressBar::Clear()
@@ -167,8 +172,6 @@ void ProgressBar::Clear()
    for (short i = 0; i < GetTerminalWidth(); i++) std::cout << " ";
    std::cout << "\r";
 }
-
-void ProgressBar::Fill() {Print(1.1);}
 
 void ProgressBar::Reset() {printedProgress = 0;}
 

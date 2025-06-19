@@ -89,6 +89,8 @@ class ProgressBar
     * This functions automaticaly checks if it should be printed so there is no worry that printing the bar will take all resources. The check is also very fast which allows for the ProgressBar to be very fast (see speed.cpp in examples directory)
     */
    void Print(const double progress);
+   /// @brief Finishes the bar and clears it
+   void Finish();
    /*! @brief Clears the printed bar
     *
     * This function should only be used when using ProgressBar::RePrint. It will clear the last line the cursor is on. So if the user is not paying attention data from terminal will be erased.
@@ -99,9 +101,6 @@ class ProgressBar
     * This function should not be used to often since no checking means that it can take a lot of resources to print the bar a lot of times in terminal. Use only when you cannot redirect outputs to ProgressBar::HandleOutput (see handle_output.cpp in examples directory) 
     */
    void RePrint();
-   /*! @brief Completely fills the progress of the bar (puts it to 1)
-    */
-   void Fill(); 
    /*! @brief Resets the progress of the bar (puts it to 0)
     */
    void Reset();
@@ -125,7 +124,7 @@ class ProgressBar
    template <typename... T>
    void HandleOutput(T... args)
    {
-      if (printedProgress < 1.) Clear();
+      Clear();
 
       ((std::cout << args << " "), ...);
       std::cout << std::endl;

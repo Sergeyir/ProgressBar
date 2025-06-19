@@ -14,13 +14,13 @@ void DoSomething() {usleep(1e3);}
 
 int main()
 {
-	ProgressBar pbar("BLOCK1");
-	std::cout << "An example how to handle output with progress bar" << std::endl;
-	for (int i = 0; i < 1e4; i++)
+	ProgressBar pBar("BLOCK1");
+	std::cout << "An example that shows how to handle output with progress bar" << std::endl;
+	for (int i = 0; i < 1e3; i++)
 	{
-		pbar.Print(static_cast<double>(i)/(1e4 - 1.));
+		pBar.Print(static_cast<double>(i)/(1e3 - 1.));
 		DoSomething();
-      if ((i + 1) % 100 == 0) pbar.HandleOutput("Writing something as the process goes");
-      if ((i + 1) % 1000 == 0) pbar.HandleOutput("Number of iterations:", i+1);
+      if ((i + 1) % 100 == 0) pBar.HandleOutput("Number of iterations:", i + 1);
 	}
+   pBar.Finish();
 }

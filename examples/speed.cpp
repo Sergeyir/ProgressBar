@@ -15,13 +15,15 @@ int main()
 {
 	const double NUMBER_OF_ITERATIONS = 1e9;
    
-	ProgressBar pbar("FANCY");
+	ProgressBar pBar("FANCY");
 	auto start = std::chrono::high_resolution_clock::now();
 	
 	for (int i = 0; i < NUMBER_OF_ITERATIONS; i++)
 	{
-		pbar.Print(static_cast<double>(i)/(NUMBER_OF_ITERATIONS - 1.));
+		pBar.Print(static_cast<double>(i)/(NUMBER_OF_ITERATIONS - 1.));
 	}
+
+   pBar.Finish();
 	
 	auto stop = std::chrono::high_resolution_clock::now();
 

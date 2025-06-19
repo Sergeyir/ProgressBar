@@ -57,7 +57,7 @@ int main()
          // thread; otherwise this while cycle will take all resources from the current thread
 			std::this_thread::sleep_for(std::chrono::milliseconds(50));
 		}
-		pbarMT.Fill();
+		pbarMT.Finish();
 	};
 
 	std::thread pbar_thread(PbarCall);
