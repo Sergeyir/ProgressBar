@@ -6,8 +6,8 @@
  *
  *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
-#ifndef PROGRESS_BAR_HPP
-#define PROGRESS_BAR_HPP
+#ifndef PROGRESS_BAR_PBAR_HPP
+#define PROGRESS_BAR_PBAR_HPP
 
 #include <iostream>
 #include <stdio.h>
@@ -180,4 +180,4 @@ class ProgressBar
    struct winsize terminalWindow;
 };
 
-#endif /* PROGRESS_BAR_HPP */
+#endif /* PROGRESS_BAR__PBAR_HPP */

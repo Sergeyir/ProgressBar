@@ -6,8 +6,8 @@
  *
  *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
-#ifndef PBAR_CPP
-#define PBAR_CPP
+#ifndef PROGRESS_BAR_PBAR_CPP
+#define PROGRESS_BAR_PBAR_CPP
 
 #include "../include/PBar.hpp"
 
@@ -209,4 +209,4 @@ std::string ProgressBar::DtoStr(const double val, const short precision)
 
 ProgressBar::~ProgressBar() {};
 
-#endif /* PBAR_CPP */
+#endif /* PROGRESS_BAR_PBAR_CPP */
