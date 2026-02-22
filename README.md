@@ -28,16 +28,10 @@ Then run to compile libraries and executables
 make
 ```
 
-You can check the compilation result by  running the simplest test executable
+You can check the compilation result by running the simplest test executable
 
 ```sh
 ./bin/test
-```
-
-There is another option for compilation with Makefile (located in etc directory). To compile the project this way run
-
-```sh
-cp etc/Makefile* . && make
 ```
 
 # Documentation
